@@ -31,3 +31,21 @@ a {
 nav{
   border: 1px solid #eee;
 }
+
+.header-img{
+  width: 100px;
+  height: 200px;
+  position: relative;
+  z-index: -1;
+}
+
+@media (min-width: 640px){
+  .header-img{
+    width: 150px;
+    height: 300px;
+  }
+}
+
+.header-img img{
+  border-radius: 6px;
+}

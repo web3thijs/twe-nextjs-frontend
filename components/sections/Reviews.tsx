@@ -1,3 +1,4 @@
+import Button from "../shared/Button";
 import Title from "../shared/Title";
 
 function Reviews() {
