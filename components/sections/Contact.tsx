@@ -4,7 +4,8 @@ function Contact() {
   return (
     <>
         <div className="">
-            <Title text="Contact" row1={"Vraag uw offerte aan of"} row2={"stel een vraag"}></Title>
+            <p className="text-gray-light font-semibold">Contact</p>
+            <p className="text-3xl md:text-4xl font-black text-blueish">Vraag uw offerte aan of <span className="hidden sm:inline"><br/></span> stel een vraag</p>
         </div>
     </>
   );

@@ -4,10 +4,10 @@ import Column from "./Column";
 function Services() {
   return (
     <>
-        <div className="md:text-center">
+        <div className="text-center">
             <p className="text-gray-light font-semibold">Diensten</p>
             <p className="text-3xl md:text-4xl font-black text-blueish">Kwaliteitsservices met <span className="hidden sm:inline"><br/></span> de beste prijzen</p>
-            <div className="grid grid-cols-1 md:grid-cols-3 md:mt-16">
+            <div className="grid grid-cols-1 sm:grid-cols-3 md:mt-16">
               <Column img={"services/category_1.svg"} title={"Nieuwbouw"}
                 rows={[
                   'Totaalproject', 'Verdeelkasten', 'Laadpalen', 'Domotica',
