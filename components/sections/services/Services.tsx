@@ -6,7 +6,7 @@ function Services() {
     <>
         <div className="md:text-center">
             <p className="text-gray-light font-semibold">Diensten</p>
-            <p className="text-4xl font-black text-blueish">Kwaliteitsservices met <span className="hidden sm:inline"><br/></span> de beste prijzen</p>
+            <p className="text-3xl md:text-4xl font-black text-blueish">Kwaliteitsservices met <span className="hidden sm:inline"><br/></span> de beste prijzen</p>
             <div className="grid grid-cols-1 md:grid-cols-3 md:mt-16">
               <Column img={"services/category_1.svg"} title={"Nieuwbouw"}
                 rows={[
@@ -17,15 +17,15 @@ function Services() {
 
               <Column img={"services/category_2.svg"} title={"Renovaties"}
                 rows={[
-                  'Totaalproject', 'Bekabeling vernieuwen', 'Aarding in orde brengen',
-                  'Schema´s in orde brengen', 'Datavoorziening',
+                  'Totaalproject', 'Bekabeling', 'Aarding',
+                  'Schema´s', 'Datavoorziening',
                   'Bedrijfspanden', 'Bedrijfshallen'
               ]}></Column>
             
               <Column img={"services/category_3.svg"} title={"Klusjes"}
                 rows={[
-                  'Aarding plaatsen', 'Aanpassingen', 'Verlichting plaatsen',
-                  'Stopcontacten plaatsen', 'Foutopsporing', 'Tuinoverkapping', 'Tuinhuis'
+                  'Aarding', 'Aanpassingen', 'Verlichting',
+                  'Stopcontacten', 'Foutopsporing', 'Tuinoverkapping', 'Tuinhuis'
               ]}></Column>
             </div>
             
