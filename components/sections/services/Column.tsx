@@ -11,13 +11,13 @@ type ButtonProps = {
 function Column({img, title, rows}: ButtonProps) {
     return <>
         <div className="md:mx-auto mt-16 md:mt-0">
-            <div className="flex justify-center md:inline">
+            <div className="flex ml-3 md:ml-3 md:inline">
                 <img src={ img } alt={ title } className="mr-6 md:mx-auto"/>
                 <p className="text-blueish text-xl my-auto font-bold md:mt-3">{ title }</p>
             </div>
-            <div className="flex justify-center">
-                <div className="sm:w-3/4 md:w-full">
-                    <ul className="mt-8 text-left columns-1 sm:columns-2 md:columns-1 leading-8">
+            <div className="flex ml-3 md:ml-0 md:justify-center">
+                <div className="md:w-full">
+                    <ul className="mt-8 text-left columns-1 xs:columns-2 md:columns-1 leading-8">
                         {rows.map((value, index) => {
                             return <li className="text-gray" key={index}><FontAwesomeIcon icon={faCheck} className={'text-greenish text-xl mr-2'}/> {value}</li>
                         })}
