@@ -1,5 +1,6 @@
 import Title from "../../shared/Title";
 import Column from "./Column";
+import Image from "next/image"
 
 function Services() {
   return (
@@ -30,7 +31,7 @@ function Services() {
             </div>
             
             <div className="flex justify-center mt-16">
-              <img src="services/not_found.svg" alt="not_found"/>
+              <Image alt={'Not found'} src={'/services/not_found.svg'} width={75} height={75}/>
               <div className="text-left my-auto ml-6">
                 <p className="text-blueish font-bold">Niet gevonden waar u naar op zoek bent?</p>
                 <p className="text-gray">Contacteer ons om te bespreken wat er verder nog mogelijk is.</p>

@@ -3,7 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Contact from "../components/sections/contact/Contact";
 import Header from "../components/sections/Header";
-import References from "../components/sections/References";
+import References from "../components/sections/references/References";
 import Reviews from "../components/sections/Reviews";
 import Services from "../components/sections/services/Services";
 
