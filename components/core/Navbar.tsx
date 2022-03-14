@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Navbar(){
     return <>
-        <nav className="px-4 py-5 bg-white sticky top-0 font-medium">
+        <nav className="px-4 py-5 bg-white sticky top-0 font-medium z-50">
             <div className="container flex flex-wrap justify-between items-center mx-auto">
                 <a href="#" className="flex items-center">
                     <img src="logo.svg" className="mr-3 h-6 sm:h-10" alt="Flowbite Logo" />
