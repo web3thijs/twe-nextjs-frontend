@@ -19,15 +19,15 @@ function Header() {
 
         <div className="flex mx-auto mt-16 lg:mt-0">
           <div className="header-img">
-              <Image alt="Mountains" src={'/header/one.jpg'} layout="fill" objectFit="cover"/>
+              <Image alt="Mountains" src={'/header/one.jpg'} layout="fill" objectFit="cover" priority/>
             </div>
 
             <div className="header-img mt-0 lg:mt-5 mx-3">
-              <Image alt="Mountains" src={'/header/two.jpg'} layout="fill" objectFit="cover"/>
+              <Image alt="Mountains" src={'/header/two.jpg'} layout="fill" objectFit="cover" priority/>
             </div>
 
             <div className="header-img mt-0 lg:mt-10">
-              <Image alt="Mountains" src={'/header/three.jpg'} layout="fill" objectFit="cover"/>
+              <Image alt="Mountains" src={'/header/three.jpg'} layout="fill" objectFit="cover" priority/>
             </div>
         </div>
       </div>
