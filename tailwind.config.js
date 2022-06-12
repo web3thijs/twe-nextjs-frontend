@@ -14,7 +14,8 @@ module.exports = {
       'greenish': '#7EB6AD',
       'greenish-light': '#DFF6F2',
       'blueish': '#212949',
-      'blueish-light': '#EEF1FF'
+      'blueish-light': '#EEF1FF',
+      'temp-purple': '#7E57C2'
     },
     screens: {
       'xs': '370px',
