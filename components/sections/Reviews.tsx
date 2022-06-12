@@ -5,7 +5,7 @@ import Image from 'next/image'
 function Reviews() {
   return (
     <>
-        <div className="grid grid-cols-2">
+        <div className="grid md:grid-cols-2">
             <div>
               <Title text="Reviews" row1={"Wat vonden de klanten"} row2={"van onze service?"}></Title>
 
@@ -31,7 +31,7 @@ function Reviews() {
                 </div>
               </div>
             </div>
-            <div>
+            <div className="mt-6 md:mt-0">
               <Image alt="Google logo" src={'/reviews/quote.svg'} layout="fixed" height={48} width={48} objectFit="cover"/>
               <p className="text-gray mt-3">Heeft on huis voorzien van elektriciteit, top werk geleverd, netjes,... Goed bezig Thomas!</p>
               <div className="mt-5 flex">
