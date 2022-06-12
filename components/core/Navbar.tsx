@@ -16,19 +16,19 @@ export default function Navbar(){
                 <div className="hidden w-full md:block md:w-auto" id="mobile-menu">
                 <ul className="flex font-semibold">
                     <li className="ml-14">
-                        <a href="#header" className="text-blueish">Home</a>
+                        <a href="#header" className="text-blueish hover:text-greenish transition-all">Home</a>
                     </li>
                     <li className="ml-14">
-                        <a href="#services" className="text-blueish">Diensten</a>
+                        <a href="#services" className="text-blueish hover:text-greenish transition-all">Diensten</a>
                     </li>
                     <li className="ml-14">
-                        <a href="#contact" className="text-blueish">Contact</a>
+                        <a href="#contact" className="text-blueish hover:text-greenish transition-all">Contact</a>
                     </li>
                     <li className="ml-14">
-                        <a href="#references" className="text-blueish">Realisaties</a>
+                        <a href="#references" className="text-blueish hover:text-greenish transition-all">Realisaties</a>
                     </li>
                     <li className="ml-14">
-                        <a href="#reviews" className="text-blueish">Reviews</a>
+                        <a href="#reviews" className="text-blueish hover:text-greenish transition-all">Reviews</a>
                     </li>
                 </ul>
                 </div>
