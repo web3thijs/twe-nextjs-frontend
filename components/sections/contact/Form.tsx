@@ -64,7 +64,6 @@ function Form() {
         <Modal isModalOpen={modalIsOpen} hideModal={() => setModalIsOpen(false)}>
             <FontAwesomeIcon icon={faCircleCheck} className="text-greenish text-5xl"/>
             <p className="pt-3">Uw bericht werd succesvol verzonden.</p>
-            <p>Ben</p>
         </Modal>
     </>
 }
