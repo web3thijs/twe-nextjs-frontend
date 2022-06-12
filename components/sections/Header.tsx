@@ -1,7 +1,15 @@
 import Button from "../shared/Button";
 import Image from 'next/image'
+import next from "next";
+import { useRouter } from "next/router";
 
 function Header() {
+  const router = useRouter()
+
+  const navigate = (url: string) => {
+    router.push('./#' + url)
+  }
+
   return (
     <>
       <div className="grid grid-cols-1 lg:grid-cols-2">
@@ -12,8 +20,8 @@ function Header() {
           </p>
           <p className="text-2xl mt-3">Voor al uw elektriciteitswerken</p>
           <div className="mt-3">
-            <Button text={"Contact"} outline={false} className={"mr-3"}></Button>
-            <Button text={"Diensten"} outline={true}></Button>
+            <Button text={"Contact"} outline={false} className={"mr-3"} callback={() => navigate("contact")}></Button>
+            <Button text={"Diensten"} outline={true} callback={() => navigate("services")}></Button>
           </div>
         </div>
 
