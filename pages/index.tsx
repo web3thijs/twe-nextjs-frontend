@@ -10,11 +10,15 @@ import Services from "../components/sections/services/Services";
 const Home: NextPage = () => {
   return (
     <>
-      <section className="mt-16">
+      <Head>
+        <title>TW Elektriciteitswerken</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <section className="mt-16" id="header">
         <Header></Header>
       </section>
 
-      <section className="mt-16">
+      <section className="mt-16" id="services">
         <Services></Services>
       </section>
 
@@ -22,12 +26,15 @@ const Home: NextPage = () => {
         <Contact></Contact>
       </section>
 
-      <section className="mt-16">
+      <section className="mt-16" id="references">
         <References></References>
       </section>
 
-      <section className="mt-16">
+      <section className="mt-16" id="reviews">
         <Reviews></Reviews>
+      </section>
+
+      <section className="mt-16" id="footer">
       </section>
     </>
   );
