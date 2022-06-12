@@ -12,7 +12,7 @@ function Button({text, outline, className, callback}: ButtonProps) {
     if(outline == false){
         return <button type="button" onClick={callback} className={`text-base text-center text-white bg-greenish font-bold border-solid border-2 border-greenish rounded-lg px-5 py-2 ${ className }`}>{ text }</button>
     } else {
-        return <button type="button" className="text-base text-center text-greenish font-semibold border-solid border-2 border-greenish rounded-lg px-5 py-2">{ text }</button>
+        return <button type="button" onClick={callback} className="text-base text-center text-greenish font-semibold border-solid border-2 border-greenish rounded-lg px-5 py-2">{ text }</button>
     }
 }
 
