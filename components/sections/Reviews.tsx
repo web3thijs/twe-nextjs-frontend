@@ -31,8 +31,8 @@ function Reviews() {
                 </div>
               </div>
             </div>
-            <div className="mt-6 md:mt-0">
-              <Image alt="Google logo" src={'/reviews/quote.svg'} layout="fixed" height={48} width={48} objectFit="cover"/>
+            <div className="mt-6 md:my-auto">
+              <Image alt="Quote" src={'/reviews/quote.svg'} layout="fixed" height={48} width={48} objectFit="cover"/>
               <p className="text-gray mt-3">Heeft on huis voorzien van elektriciteit, top werk geleverd, netjes,... Goed bezig Thomas!</p>
               <div className="mt-5 flex">
                 <div className="rounded-full bg-temp-purple text-white w-10 h-10 font-medium flex justify-center">
