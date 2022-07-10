@@ -35,7 +35,7 @@ function Reviews() {
                 </div>
               </div>
             </div>
-            <div className="mt-6 md:my-auto">
+            <div className="mt-6 md:my-auto bg-white shadow-3xl p-6 rounded-xl">
               <Image alt="Quote" src={'/reviews/quote.svg'} layout="fixed" height={48} width={48} objectFit="cover"/>
               <p className="text-gray mt-3">Heeft on huis voorzien van elektriciteit, top werk geleverd, netjes,... Goed bezig Thomas!</p>
               <div className="mt-5 flex">
