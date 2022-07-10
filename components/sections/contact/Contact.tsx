@@ -6,7 +6,7 @@ function Contact() {
     <>
         <div className="grid grid-cols-1 md:grid-cols-2">
           <div>
-          <p className="text-gray-light font-semibold">Contact</p>
+          <p className="text-gray">Contact</p>
           <p className="text-3xl md:text-4xl font-black text-blueish">Vraag uw offerte aan of <span className="hidden xl:inline"><br/></span> stel een vraag</p>
           </div>
         </div>
