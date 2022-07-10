@@ -8,9 +8,9 @@ module.exports = {
       transparent: 'transparent',
       'black': '#000000',
       'white': '#FFFFFF',
-      'offwhite': '#F5F5F5',
+      'offwhite': '#FBFAFB',
       'gray': '#85899C',
-      'gray-light': '#C5C5C5',
+      'gray-light': '#F1F1F1',
       'greenish': '#7EB6AD',
       'greenish-light': '#DFF6F2',
       'blueish': '#212949',
@@ -25,6 +25,9 @@ module.exports = {
       'xl': '1280px',
       '2xl': '1536px',
     },
+    boxShadow: {
+      '3xl': '0 1.25rem 1.6875rem 0 rgba(0, 0, 0, 0.05)',
+    }
   },
   plugins: [],
 }
