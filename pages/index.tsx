@@ -14,27 +14,27 @@ const Home: NextPage = () => {
         <title>TW Elektriciteitswerken</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <section className="mt-16" id="header">
+      <section className="mt-20" id="header">
         <Header></Header>
       </section>
 
-      <section className="mt-16" id="services">
+      <section className="mt-20" id="services">
         <Services></Services>
       </section>
 
-      <section className="mt-16" id="contact">
+      <section className="mt-20" id="contact">
         <Contact></Contact>
       </section>
 
-      <section className="mt-16" id="references">
+      <section className="mt-20" id="references">
         <References></References>
       </section>
 
-      <section className="mt-16" id="reviews">
+      <section className="mt-20" id="reviews">
         <Reviews></Reviews>
       </section>
 
-      <section className="mt-16" id="footer">
+      <section className="mt-20" id="footer">
       </section>
     </>
   );
