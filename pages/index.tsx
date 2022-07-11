@@ -34,8 +34,7 @@ const Home: NextPage = () => {
         <Reviews></Reviews>
       </section>
 
-      <section className="mt-20" id="footer">
-      </section>
+      <section className="mt-20" id="footer"></section>
     </>
   );
 };
