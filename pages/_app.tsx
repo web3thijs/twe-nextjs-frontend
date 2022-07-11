@@ -9,8 +9,8 @@ import { useRef } from "react";
 config.autoAddCss = false;
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const containerRef = useRef(null)
-  
+  const containerRef = useRef(null);
+
   return (
     <LocomotiveScrollProvider
       options={{
@@ -26,11 +26,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       }
       containerRef={containerRef}
     >
-      <main data-scroll-container ref={containerRef}>
-        <Layout>
+      <Layout>
+        <main data-scroll-container ref={containerRef}>
           <Component {...pageProps} />
-        </Layout>
-      </main>
+        </main>
+      </Layout>
     </LocomotiveScrollProvider>
   );
 }
