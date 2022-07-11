@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faLightbulb } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image"
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
@@ -12,18 +12,18 @@ type ButtonProps = {
 
 function Column({img, title, rows}: ButtonProps) {
     return <>
-        <div className="sm:mx-auto mt-16 sm:mt-0">
+        <div className="sm:mx-auto mt-16 sm:mt-0 bg-white  pt-8 pb-12 px-24 rounded-xl w-fit  border border-solid border-gray-light">
             <div className="flex ml-3 sm:ml-3 sm:inline">
-                <div className="relative z-0 w-24 h-24 mr-5 md:w-32 md:h-32 sm:mx-auto">
-                    <Image alt={'title'} src={img} layout={'fill'} priority/>
+                <div className="relative z-0 mr-5 mb-4 sm:mx-auto">
+                    <FontAwesomeIcon icon={faLightbulb as IconProp} size={'4x'} className={'text-blueish'}/>
                 </div>
-                <p className="text-blueish text-xl my-auto font-bold sm:mt-3">{ title }</p>
+                <p className="text-blueish text-xl my-auto font-semibold">{ title }</p>
             </div>
-            <div className="flex ml-3 sm:ml-0 sm:justify-center">
+            <div className="flex ml-3 sm:ml-0">
                 <div className="sm:w-full">
                     <ul className="mt-8 text-left columns-1 xs:columns-2 sm:columns-1 leading-8">
                         {rows.map((value, index) => {
-                            return <li className="text-gray" key={index}><FontAwesomeIcon icon={faCheck as IconProp} className={'text-greenish text-xl mr-2'}/> {value}</li>
+                            return <li className="text-gray" key={index}><FontAwesomeIcon icon={faCheck as IconProp} className={'text-greenish text-xl mr-3'}/> {value}</li>
                         })}
                     </ul>
                 </div>

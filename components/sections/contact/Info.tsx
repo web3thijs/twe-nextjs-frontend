@@ -8,7 +8,7 @@ type InfoProps = {
 function Info({img, text}: InfoProps) {
     return (
         <>
-            <div className="flex mt-3 md:mt-8">
+            <div className="flex my-6">
                 <div className="relative z-0 w-12 h-12">
                     <Image alt={'title'} src={img} layout={'fill'} priority/>
                 </div>

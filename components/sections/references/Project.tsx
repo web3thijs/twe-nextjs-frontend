@@ -8,14 +8,14 @@ type ProjectProps = {
 function Project({ img }: ProjectProps) {
   return (
     <>
-      <div className="bg-white rounded-xl shadow-3xl">
+      <div className="bg-white rounded-xl  border border-solid border-gray-light">
         <div className="relative z-0 h-64 w-80">
           <Image
             alt={"title"}
             src={img}
             layout={"fill"}
             priority
-            className="rounded-t-xl"
+            className="rounded-xl-t-xl"
             objectFit="cover"
           />
         </div>

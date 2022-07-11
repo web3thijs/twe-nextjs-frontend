@@ -14,12 +14,9 @@ function Header() {
     <>
       <div className="grid grid-cols-1 lg:grid-cols-2">
         <div className="my-auto mx-auto text-center lg:text-left">
-          <p className="text-4xl sm:text-5xl font-black text-blueish">TW</p>
-          <p className="text-4xl sm:text-5xl font-black text-blueish mt-1 md:mt-3">
-            Elektriciteitswerken
-          </p>
-          <p className="text-2xl mt-3">Voor al uw elektriciteitswerken</p>
-          <div className="mt-3">
+          <p className="text-xl font-light text-gray font-extrabold">TW Elektriciteitswerken</p>
+          <p className="text-4xl sm:text-6xl font-bold text-upper text-blueish mb-6 mt-3">Voor al uw elektriciteitswerken</p>
+          <div className="">
             <Button text={"Contact"} outline={false} className={"mr-3"} callback={() => navigate("contact")}></Button>
             <Button text={"Diensten"} outline={true} callback={() => navigate("services")}></Button>
           </div>
