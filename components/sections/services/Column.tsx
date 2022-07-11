@@ -2,6 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image"
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 type ButtonProps = {
     img: string;
@@ -22,7 +23,7 @@ function Column({img, title, rows}: ButtonProps) {
                 <div className="sm:w-full">
                     <ul className="mt-8 text-left columns-1 xs:columns-2 sm:columns-1 leading-8">
                         {rows.map((value, index) => {
-                            return <li className="text-gray" key={index}><FontAwesomeIcon icon={faCheck} className={'text-greenish text-xl mr-2'}/> {value}</li>
+                            return <li className="text-gray" key={index}><FontAwesomeIcon icon={faCheck as IconProp} className={'text-greenish text-xl mr-2'}/> {value}</li>
                         })}
                     </ul>
                 </div>

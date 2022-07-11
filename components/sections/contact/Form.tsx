@@ -1,3 +1,4 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { platform } from "os";
@@ -62,7 +63,7 @@ function Form() {
         </div>
 
         <Modal isModalOpen={modalIsOpen} hideModal={() => setModalIsOpen(false)}>
-            <FontAwesomeIcon icon={faCircleCheck} className="text-greenish text-5xl"/>
+            <FontAwesomeIcon icon={faCircleCheck as IconProp} className="text-greenish text-5xl"/>
             <p className="pt-3">Uw bericht werd succesvol verzonden.</p>
         </Modal>
     </>

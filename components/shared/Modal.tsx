@@ -1,3 +1,4 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faCross, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useRef, useState } from "react";
@@ -28,7 +29,7 @@ function Modal({ isModalOpen, hideModal, children }: React.PropsWithChildren<Mod
     return <>
         <div className="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 h-screen bg-black/50 grid place-content-center" id="modal">
             <div ref={ref} className="bg-white rounded text-center p-10 relative">
-                <FontAwesomeIcon icon={faTimes} className="text-gray-light absolute top-5 right-5 cursor-pointer" onClick={() => hideModal()}/>
+                <FontAwesomeIcon icon={faTimes as IconProp} className="text-gray-light absolute top-5 right-5 cursor-pointer" onClick={() => hideModal()}/>
                 {children}
             </div>
         </div>
