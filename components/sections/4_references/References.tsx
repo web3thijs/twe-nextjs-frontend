@@ -12,12 +12,10 @@ function References() {
     <>
       <div className="container">
         <div className="grid grid-cols-2">
-          <div className="text-left">
-            <p className="text-gray font-semibold text-xl mb-3">Realisaties</p>
-            <p className="text-3xl md:text-5xl font-bold text-blueish">
-              Recente projecten
-            </p>
-          </div>
+          <Title
+            small={"Realisaties"}
+            big={"Recente projecten"}
+          ></Title>
           <div className="ml-auto my-auto">
             <Button text={"View more"} outline={true}></Button>
           </div>

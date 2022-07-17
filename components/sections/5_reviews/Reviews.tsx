@@ -8,10 +8,10 @@ function Reviews() {
     <div className="container">
       <div className="grid sm:grid-cols-2 space-x-6">
         <div className="">
-           <p className="text-gray font-semibold text-xl mb-3">Reviews</p>
-            <p className="text-3xl md:text-5xl font-bold text-blueish">
-              Wat vonden de klanten van onze service?
-            </p>
+        <Title
+          small={"Reviews"}
+          big={"Wat vonden de klanten van onze service?"}
+        ></Title>
           <div className="mt-6">
             <div className="flex content-center">
               <div className="relative w-8 h-8">
