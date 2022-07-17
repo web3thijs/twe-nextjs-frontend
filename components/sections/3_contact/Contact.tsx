@@ -30,21 +30,18 @@ function Contact() {
             <div className="flex bg-white border border-solid border-gray-light rounded-xl w-fit py-5 px-7 shadow-3xl">
               <FontAwesomeIcon
                 icon={faPhone as IconProp}
-                size={"xl"}
                 className={"text-blueish"}
               />
             </div>
             <div className="flex bg-white border border-solid border-gray-light rounded-xl w-fit py-5 px-7 shadow-3xl">
               <FontAwesomeIcon
                 icon={faEnvelope as IconProp}
-                size={"xl"}
                 className={"text-blueish"}
               />
             </div>
             <div className="flex bg-white border border-solid border-gray-light rounded-xl w-fit  py-5 px-7 shadow-3xl">
               <FontAwesomeIcon
                 icon={faGlobeEurope as IconProp}
-                size={"xl"}
                 className={"text-blueish"}
               />
             </div>
