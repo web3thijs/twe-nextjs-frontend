@@ -8,7 +8,7 @@ type ProjectProps = {
 function Project({ img }: ProjectProps) {
   return (
     <>
-      <div className="bg-white rounded-xl  border border-solid border-gray-light shadow-3xl p-5">
+      <div className="bg-white rounded-xl  border border-solid border-gray-light shadow-3xl p-5 cursor-pointer">
         <div className="relative z-0 h-52 w-96">
           <Image
             alt={"title"}
