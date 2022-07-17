@@ -6,11 +6,11 @@ import Info from "./Info";
 
 function Contact() {
   return (
-    <>
-      <div className="grid grid-cols-1 md:grid-cols-2">
-        <div>
-          <p className="text-gray">Contact</p>
-          <p className="text-3xl md:text-4xl font-bold text-blueish">
+    <div className="container">
+      <div className="grid grid-cols-1 md:grid-col2s-">
+        <div className="text-center">
+          <p className="text-gray font-semibold text-xl mb-3">Contact</p>
+          <p className="text-3xl md:text-5xl font-bold text-blueish">
             Vraag uw offerte aan of{" "}
             <span className="hidden xl:inline">
               <br />
@@ -19,40 +19,36 @@ function Contact() {
           </p>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2">
-        <div className="order-1">
-          <div className="mt-6">
-            <div className="flex bg-white border border-solid border-gray-light rounded-xl w-fit py-3 px-6">
+      <div className="grid grid-cols-1">
+        <div className="mt-6 order-1">
+          <div className="max-w-4xl mx-auto">
+            <Form></Form>
+          </div>
+        </div>
+        <div>
+        <div className="mt-6 flex space-x-6 justify-center">
+            <div className="flex bg-white border border-solid border-gray-light rounded-xl w-fit py-5 px-7 shadow-3xl">
               <FontAwesomeIcon
                 icon={faPhone as IconProp}
-                size={"xl"}
                 className={"text-blueish"}
               />
-              <p className="text-gray ml-4 my-auto">+32 471 25 39 84</p>
             </div>
-            <div className="flex bg-white border border-solid border-gray-light rounded-xl w-fit py-3 px-6 mt-3">
+            <div className="flex bg-white border border-solid border-gray-light rounded-xl w-fit py-5 px-7 shadow-3xl">
               <FontAwesomeIcon
                 icon={faEnvelope as IconProp}
-                size={"xl"}
                 className={"text-blueish"}
               />
-              <p className="text-gray ml-4 my-auto">thijs.wouters@outlook.com</p>
             </div>
-            <div className="flex bg-white border border-solid border-gray-light rounded-xl w-fit py-3 px-6 mt-3">
+            <div className="flex bg-white border border-solid border-gray-light rounded-xl w-fit  py-5 px-7 shadow-3xl">
               <FontAwesomeIcon
                 icon={faGlobeEurope as IconProp}
-                size={"xl"}
                 className={"text-blueish"}
               />
-              <p className="text-gray ml-4 my-auto">boonhofstraat 54, 2480 Dessel</p>
             </div>
           </div>
         </div>
-        <div className="order-0 md:order-1 mt-0 md:-mt-24">
-          <Form></Form>
-        </div>
       </div>
-    </>
+    </div>
   );
 }
 

@@ -2,10 +2,11 @@ import React from "react";
 
 export default function Navbar(){
     return <>
-        <nav className="px-4 py-5 bg-offwhite sticky top-0 font-medium z-50 backdrop-filter backdrop-blur-lg bg-opacity-30">
+        <nav className="px-4 py-5 sticky top-0 font-medium z-50 backdrop-filter backdrop-blur-lg bg-opacity-30">
             <div className="container flex flex-wrap justify-between items-center mx-auto">
-                <a href="#" className="flex items-center">
+                <a href="#" className="flex items-center justify-center">
                     <img src="logo.svg" className="mr-3 h-6 sm:h-10" alt="Flowbite Logo" />
+                    <p className="text-blueish font-semibold text-2xl">TWe</p>
                 </a>
                 <button data-collapse-toggle="mobile-menu" type="button" className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-xl md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu-2" aria-expanded="false">
                 <span className="sr-only">Open main menu</span>
