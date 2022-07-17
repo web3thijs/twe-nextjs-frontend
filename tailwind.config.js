@@ -4,11 +4,24 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: '1rem',
+        sm: '2rem',
+        lg: '4rem',
+        xl: '5rem',
+        '2xl': '6rem',
+      },
+    },
+    fontFamily: {
+      sans: ['Poppins', 'sans-serif']
+    },
     colors: {
       transparent: 'transparent',
       'black': '#000000',
       'white': '#FFFFFF',
-      'offwhite': '#F9F9F9',
+      'offwhite': '#f0f5f4',
       'gray': '#85899C',
       'gray-light': '#F1F1F1',
       'greenish': '#7EB6AD',
@@ -26,7 +39,7 @@ module.exports = {
       '2xl': '1536px',
     },
     boxShadow: {
-      '3xl': '0 1.25rem 1.6875rem 0 rgba(0, 0, 0, 0.05)',
+      '3xl': '0 1px 4px 0 rgb(20 20 43 / 1%), 0 3px 6px 0 rgb(51 71 255 / 1%), 0 4px 22px 0 rgb(21 19 91 / 4%)',
     }
   },
   plugins: [],
