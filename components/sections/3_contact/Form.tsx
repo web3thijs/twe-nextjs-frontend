@@ -36,8 +36,8 @@ function Form() {
     }
 
     return <>
-        <div className="bg-white  border border-solid border-gray-light rounded-xl mt-5 md:mt-0">
-            <form method="POST" onSubmit={submitForm} className="p-5" id="contact-form">
+        <div className="bg-white  border border-solid border-gray-light rounded-2xl shadow-3xl">
+            <form method="POST" onSubmit={submitForm} className="p-14" id="contact-form">
                 <div className="mt-3 grid grid-cols-2">
                     <div className="mx-2">
                         {/* <label htmlFor="test">Your email</label> */}
@@ -53,7 +53,7 @@ function Form() {
                 </div>
 
                 <div className="mx-2 mt-4">
-                    <textarea id="message" name="message" rows={10} className="w-full px-5 py-3 rounded-xl border border-solid border-gray-light" placeholder="Bericht"></textarea>
+                    <textarea id="message" name="message" rows={10} className="w-full px-7 py-5 rounded-xl border border-solid border-gray-light shadow-3xl" placeholder="Bericht"></textarea>
                 </div>
 
                 <div className="text-center">

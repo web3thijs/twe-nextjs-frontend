@@ -1,17 +1,17 @@
-import Button from "../shared/Button";
-import Title from "../shared/Title";
+import Button from "../../shared/Button";
+import Title from "../../shared/Title";
 import Image from "next/image";
 
 function Reviews() {
   return (
     <>
+    <div className="container">
       <div className="grid sm:grid-cols-2 space-x-6">
         <div className="">
-          <Title
-            text="Reviews"
-            row1={"Wat vonden de klanten"}
-            row2={"van onze service?"}
-          ></Title>
+           <p className="text-gray font-semibold text-xl mb-3">Reviews</p>
+            <p className="text-3xl md:text-5xl font-bold text-blueish">
+              Wat vonden de klanten van onze service?
+            </p>
           <div className="mt-6">
             <div className="flex content-center">
               <div className="relative w-8 h-8">
@@ -60,7 +60,7 @@ function Reviews() {
             </div>
           </div>
         </div>
-        <div className="mt-6 md:my-auto bg-white p-12 rounded-xl border border-solid border-gray-light">
+        <div className="mt-6 md:my-auto bg-white p-12 rounded-xl border border-solid border-gray-light shadow-3xl">
           <Image
             alt="Quote"
             src={"/reviews/quote.svg"}
@@ -81,6 +81,7 @@ function Reviews() {
           </div>
         </div>
         <div></div>
+      </div>
       </div>
     </>
   );
