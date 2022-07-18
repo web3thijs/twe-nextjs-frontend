@@ -8,7 +8,7 @@ import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 function Services() {
   return (
     <>
-      <div className="container mx-auto">
+      <div className="container">
         <Title
           small={"Diensten"}
           big={"Kwaliteitsservices met de beste prijzen"}

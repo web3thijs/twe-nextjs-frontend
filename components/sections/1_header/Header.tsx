@@ -12,7 +12,7 @@ function Header() {
 
   return (
     <>
-    <div className="container mx-auto">
+    <div className="container">
       <div className="grid grid-cols-1 lg:grid-cols-2">
         <div className="my-auto mx-auto text-left">
           <p className="text-5xl sm:text-7xl text-blueish mb-6 mt-3 font-bold">Voor al uw <br/>elektriciteits-<br/>werken</p>
