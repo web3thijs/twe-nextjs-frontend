@@ -21,7 +21,7 @@ function Column({img, title, rows}: ButtonProps) {
             </div>
             <div className="flex ml-3 sm:ml-0">
                 <div className="sm:w-full">
-                    <ul className="mt-8 text-left columns-1 xs:columns-2 md:columns-1 leading-8">
+                    <ul className="mt-8 text-left columns-1 sm:columns-2 md:columns-1 leading-8">
                         {rows.map((value, index) => {
                             return <li className="text-gray" key={index}><FontAwesomeIcon icon={faCheck as IconProp} className={'text-greenish text-xl mr-3'}/> {value}</li>
                         })}
