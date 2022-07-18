@@ -6,7 +6,7 @@ function Reviews() {
   return (
     <>
     <div className="container">
-      <div className="grid sm:grid-cols-2 space-x-6">
+      <div className="grid md:grid-cols-2 md:space-x-6">
         <div className="">
         <Title
           small={"Reviews"}
@@ -60,7 +60,7 @@ function Reviews() {
             </div>
           </div>
         </div>
-        <div className="mt-6 md:my-auto bg-white p-12 rounded-xl border border-solid border-gray-light shadow-3xl">
+        <div className="mt-6 md:my-auto bg-white p-12 rounded-xl border border-solid border-gray-light shadow-3xl w-full">
           <Image
             alt="Quote"
             src={"/reviews/quote.svg"}
