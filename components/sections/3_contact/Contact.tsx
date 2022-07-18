@@ -30,24 +30,24 @@ function Contact() {
         </div>
         <div>
           <div className="mt-6 flex space-x-6 justify-center">
-            <div className="flex bg-white border border-solid border-gray-light rounded-xl w-fit py-5 px-7 shadow-3xl">
+            <a href="tel: +32471 25 39 84"className="flex bg-white border border-solid border-gray-light rounded-xl w-fit py-5 px-7 shadow-3xl">
               <FontAwesomeIcon
                 icon={faPhone as IconProp}
                 className={"text-blueish"}
               />
-            </div>
-            <div className="flex bg-white border border-solid border-gray-light rounded-xl w-fit py-5 px-7 shadow-3xl">
+            </a>
+            <a href="mailto: twelektriciteitswerken@outlook.com" className="flex bg-white border border-solid border-gray-light rounded-xl w-fit py-5 px-7 shadow-3xl">
               <FontAwesomeIcon
                 icon={faEnvelope as IconProp}
                 className={"text-blueish"}
               />
-            </div>
-            <div className="flex bg-white border border-solid border-gray-light rounded-xl w-fit  py-5 px-7 shadow-3xl">
+            </a>
+            <a href="https://www.facebook.com/TWelektriciteitswerken" target={'_blank'} className="flex bg-white border border-solid border-gray-light rounded-xl w-fit  py-5 px-7 shadow-3xl">
               <FontAwesomeIcon
                 icon={faGlobeEurope as IconProp}
                 className={"text-blueish"}
               />
-            </div>
+            </a>
           </div>
         </div>
       </div>
