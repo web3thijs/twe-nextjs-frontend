@@ -12,7 +12,7 @@ export default function handler(req: any, res: any) {
 
     const dataTo = {
       to: `twelektriciteitswerken@outlook.com`,
-      from: body.mail,
+      from: 'form@thijstracker.com',
       subject: `Form`,
       text: message,
       cc: ``,
@@ -23,14 +23,14 @@ export default function handler(req: any, res: any) {
 
     const dataFrom = {
       to: body.mail,
-      from: 'form@tw-elek.be',
-      subject: `Bericht succesvol verzonden.`,
-      text: message,
+      from: 'form@thijstracker.com',
+      subject: `Form`,
+      text: 'Uw bericht naar TW elektriciteitswerken:\n' + message,
       cc: ``,
       html: message.replace(/\r\n/g, '<br>')
     };
 
-    sgMail.send(dataTo);
+    sgMail.send(dataFrom);
 
     console.log(body)
     res.status(200).json({ status: 'Ok' });
