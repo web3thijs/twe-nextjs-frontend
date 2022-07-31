@@ -11,7 +11,7 @@ function Services() {
       <div className="container">
         <Title
           small={"Diensten"}
-          big={"Kwaliteitsservices met de beste prijzen"}
+          big={"Kwaliteit aan een scherpe prijs!"}
           outline={"center"}
         ></Title>
         <div className="grid grid-cols-1 md:grid-cols-3 md:mt-16 ">
@@ -26,9 +26,10 @@ function Services() {
               "Afwerking",
               "Armaturen",
               "Slijpwerken",
-              "Datavoorziening",
+              "Databekabeling",
               "Bedrijfspanden",
               "Bedrijfshallen",
+              "...",
             ]}
           ></Column>
 
@@ -40,9 +41,10 @@ function Services() {
               "Bekabeling",
               "Aarding",
               "Schema´s",
-              "Datavoorziening",
+              "Databekabeling",
               "Bedrijfspanden",
               "Bedrijfshallen",
+              "...",
             ]}
           ></Column>
 
@@ -57,6 +59,7 @@ function Services() {
               "Foutopsporing",
               "Tuinoverkapping",
               "Tuinhuis",
+              "...",
             ]}
           ></Column>
         </div>
@@ -75,7 +78,8 @@ function Services() {
                 Niet gevonden waar u naar op zoek bent?
               </p>
               <p className="text-gray">
-                Contacteer ons om te bespreken wat er verder nog mogelijk is.
+                <a className="cursor-pointer text-greenish underline" href="#contact">Contacteer</a> ons vrijblijvend. Samen zoeken we naar de
+                geschikte oplossing.
               </p>
             </div>
           </div>

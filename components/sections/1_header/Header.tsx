@@ -16,7 +16,7 @@ function Header() {
       <div className="grid grid-cols-1 lg:grid-cols-2">
         <div className="my-auto mx-auto text-left">
           <p className="text-5xl sm:text-7xl text-blueish mb-6 mt-3 font-bold">Voor al uw <br/>elektriciteits-<br/>werken</p>
-          <p className="text-gray mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quo eius tempora, suscipit aut quia, repudiandae dignissimos porro enim, laboriosam consequuntur optio. Eleniti vitae veritatis rerum.</p>
+          <p className="text-gray mb-4">Uw renovatie of nieuwbouw helemaal up-to-date maken met de modernste technologieën? Of kleine werken aan uw elektrische installatie? Bij TW Elektriciteitswerken bent u aan het juiste adres. Vraag vrijblijvend een offerte aan. Wij zorgen voor een scherpe prijs én kwaliteitswerk.</p>
           <div className="">
             <Button text={"Contact"} outline={false} className={"mr-3"} callback={() => navigate("contact")}></Button>
             <Button text={"Diensten"} outline={true} callback={() => navigate("services")}></Button>
