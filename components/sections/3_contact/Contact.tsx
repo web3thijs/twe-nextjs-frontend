@@ -42,7 +42,7 @@ function Contact() {
                 className={"text-blueish"}
               />
             </a>
-            <a href="https://www.facebook.com/TWelektriciteitswerken" target={'_blank'} className="flex bg-white border border-solid border-gray-light rounded-xl w-fit  py-5 px-7 shadow-3xl">
+            <a href="https://www.facebook.com/TWelektriciteitswerken" target={'_blank'} rel="noreferrer" className="flex bg-white border border-solid border-gray-light rounded-xl w-fit  py-5 px-7 shadow-3xl">
               <FontAwesomeIcon
                 icon={faGlobeEurope as IconProp}
                 className={"text-blueish"}
