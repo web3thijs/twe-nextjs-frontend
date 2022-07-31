@@ -7,13 +7,13 @@ export default async function handler(req: any, res: any) {
     const message = `
       Name: ${body.firstName} ${body.lastName}\r\n
       Email: ${body.mail}\r\n
-      Message: ${body.message}\r\n
+      Bericht:\r\n ${body.message}\r\n
     `;
 
     const dataTo = {
       to: `twelektriciteitswerken@outlook.com`,
       from: 'form@thijstracker.com',
-      subject:  `Contact: vraag / offerte ${body.firstName} ${body.lastName}`,
+      subject:  `Contact: ${body.firstName} ${body.lastName}`,
       text: message,
       cc: ``,
       html: message.replace(/\r\n/g, '<br>')
