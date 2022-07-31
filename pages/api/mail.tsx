@@ -13,7 +13,7 @@ export default async function handler(req: any, res: any) {
     const dataTo = {
       to: `twelektriciteitswerken@outlook.com`,
       from: 'form@thijstracker.com',
-      subject: `Form`,
+      subject:  `Contact: vraag / offerte ${body.firstName} ${body.lastName}`,
       text: message,
       cc: ``,
       html: message.replace(/\r\n/g, '<br>')
@@ -24,7 +24,7 @@ export default async function handler(req: any, res: any) {
     const dataFrom = {
       to: body.mail,
       from: 'form@thijstracker.com',
-      subject: `Form`,
+      subject: `TW Elektriciteitswerken - Uw vraag / offerte`,
       text: 'Uw bericht naar TW elektriciteitswerken:\n' + message,
       cc: ``,
       html: message.replace(/\r\n/g, '<br>')
