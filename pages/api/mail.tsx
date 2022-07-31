@@ -5,7 +5,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 export default async function handler(req: any, res: any) {
     const body = JSON.parse(req.body);
     const message = `
-      Name: ${body.firstName} ${body.lastName}\r\n
+      Naam: ${body.firstName} ${body.lastName}\r\n
       Email: ${body.mail}\r\n
       Bericht:\r\n ${body.message}\r\n
     `;
