@@ -1,24 +1,23 @@
 import React from "react";
 
 type TitleProps = {
-    text: string;
-    row1: string;
-    row2?: string;
-}
+  small: string;
+  big: string;
+  outline?: "left" | "center" | "right";
+};
 
-function Title({text, row1, row2}: TitleProps) {
-    if(row2 == undefined){
-        return <>
-            <p className="text-gray">{ text }</p>
-            <p className="text-3xl md:text-4xl font-bold text-blueish">{ row1 }</p>
-        </>
-    }
-
-    return <>
-        <p className="text-gray">{ text }</p>
-        <p className="text-3xl md:text-4xl font-bold text-blueish">{ row1 }</p>
-        <p className="text-3xl md:text-4xl font-bold text-blueish">{ row2 }</p>
-    </>
+function Title({ small, big, outline = 'left' }: TitleProps) {
+  return (
+    <div className={`max-w-xl 
+        ${outline == "center" && "mx-auto text-center"}
+        ${outline == "right" && "ml-auto text-right"}
+    `}>
+      <p className={`text-gray font-semibold text-sm sm:text-xl mb-1`}>
+        {small}
+      </p>
+      <p className={`text-3xl sm:text-5xl font-bold text-blueish`}>{big}</p>
+    </div>
+  );
 }
 
 export default Title;

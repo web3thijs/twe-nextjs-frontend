@@ -37,13 +37,13 @@ function Form() {
 
     return <>
         <div className="bg-white  border border-solid border-gray-light rounded-2xl shadow-3xl">
-            <form method="POST" onSubmit={submitForm} className="p-14" id="contact-form">
-                <div className="mt-3 grid grid-cols-2">
+            <form method="POST" onSubmit={submitForm} className="p-3" id="contact-form">
+                <div className="mt-3 grid grid-cols-1 sm:grid-cols-2">
                     <div className="mx-2">
                         {/* <label htmlFor="test">Your email</label> */}
                         <Input id={"firstName"} type={"text"} placeholder={'Voornaam'}></Input>
                     </div>
-                    <div className="mx-2">
+                    <div className="mx-2 mt-5 sm:mt-0">
                         <Input id={"lastName"} type={"text"} placeholder={'Achternaam'}></Input>
                     </div>
                 </div>

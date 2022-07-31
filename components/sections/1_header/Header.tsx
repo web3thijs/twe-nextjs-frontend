@@ -12,10 +12,10 @@ function Header() {
 
   return (
     <>
-    <div className="container mx-auto">
+    <div className="container">
       <div className="grid grid-cols-1 lg:grid-cols-2">
-        <div className="my-auto mx-auto text-center lg:text-left">
-          <p className="text-4xl sm:text-7xl text-blueish mb-6 mt-3 font-bold">Voor al uw <br/>elektriciteits-<br/>werken</p>
+        <div className="my-auto mx-auto text-left">
+          <p className="text-5xl sm:text-7xl text-blueish mb-6 mt-3 font-bold">Voor al uw <br/>elektriciteits-<br/>werken</p>
           <p className="text-gray mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quo eius tempora, suscipit aut quia, repudiandae dignissimos porro enim, laboriosam consequuntur optio. Eleniti vitae veritatis rerum.</p>
           <div className="">
             <Button text={"Contact"} outline={false} className={"mr-3"} callback={() => navigate("contact")}></Button>
@@ -23,7 +23,7 @@ function Header() {
           </div>
         </div>
 
-        <div className="flex mx-auto mt-16 lg:mt-0">
+        <div className="mx-auto mt-16 lg:mt-0 hidden lg:flex">
           <Image src={"/logo.svg"} width={300} height={300}/>
         </div>
       </div>
