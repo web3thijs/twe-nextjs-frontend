@@ -14,7 +14,7 @@ const Home: NextPage = () => {
         <title>TW Elektriciteitswerken</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <section className="pt-32 pb-48" id="header">
+      <section className="pt-12 pb-16 lg:pt-32 lg:pb-48" id="header">
         <Header></Header>
       </section>
 

@@ -1,4 +1,5 @@
 import Title from "../../shared/Title";
+import Image from "next/image";
 import Project from "./Project";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -7,23 +8,71 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Button from "../../shared/Button";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Autoplay, Navigation, Pagination } from "swiper";
+import React, { useRef } from "react";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+
 function References() {
+  const swiperSlideClass = "";
+  const prevRef = useRef<HTMLDivElement>(null);
+  const nextRef = useRef<HTMLDivElement>(null);
   return (
     <>
       <div className="container">
-        <div className="grid grid-cols-2">
+        <div className="grid">
           <Title
             small={"Realisaties"}
             big={"Recente projecten"}
+            outline="center"
           ></Title>
-          <div className="ml-auto my-auto">
-            <Button text={"View more"} outline={true}></Button>
-          </div>
         </div>
-        <div className="flex justify-center space-x-10 my-8">
-          <Project img={"/header/one.jpg"}></Project>
-          <Project img={"/header/two.jpg"}></Project>
-          <Project img={"/header/three.jpg"}></Project>
+        <div className="h-[12rem] max-w-[18rem] xs:h-[26rem] xs:max-w-[48rem] mx-auto">
+          <Swiper
+            spaceBetween={30}
+            pagination={{
+              type: 'fraction',
+              clickable: true,
+            }}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: true,
+            }}
+            modules={[Pagination, Navigation, Autoplay]}
+            className="w-sm h-full flex overflow-x-hidden mt-6 rounded-lg"
+          >
+            <SwiperSlide className={swiperSlideClass}>
+              <Image
+                objectFit="cover"
+                layout="fill"
+                src={"/references/3.jpg"}
+              ></Image>
+            </SwiperSlide>
+            <SwiperSlide className={swiperSlideClass}>
+              <Image
+                objectFit="cover"
+                layout="fill"
+                src={"/references/1.jpg"}
+              ></Image>
+            </SwiperSlide>
+            <SwiperSlide className={swiperSlideClass}>
+              <Image
+                objectFit="cover"
+                layout="fill"
+                src={"/references/7.jpg"}
+              ></Image>
+            </SwiperSlide>
+            <SwiperSlide className={swiperSlideClass}>
+              <Image
+                objectFit="cover"
+                layout="fill"
+                src={"/references/2.jpg"}
+              ></Image>
+            </SwiperSlide>
+          </Swiper>
         </div>
       </div>
     </>
