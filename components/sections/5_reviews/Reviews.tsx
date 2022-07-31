@@ -70,14 +70,13 @@ function Reviews() {
             objectFit="cover"
           />
           <p className="text-gray mt-3">
-            Heeft on huis voorzien van elektriciteit, top werk geleverd,
-            netjes,... Goed bezig Thomas!
+            Snelle en zeer professionele service. Van offerte tot oplevering in minder dan 10 dagen. Mercikes Thomas !!!
           </p>
           <div className="mt-5 flex">
             <div className="rounded-full bg-temp-purple text-white w-10 h-10 font-medium flex justify-center">
-              <p className="my-auto">TM</p>
+              <p className="my-auto text-sm">BD</p>
             </div>
-            <p className="font-semibold my-auto ml-3">Tom Meeusen</p>
+            <p className="font-semibold my-auto ml-3">Bert Diels</p>
           </div>
         </div>
         <div></div>

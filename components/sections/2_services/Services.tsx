@@ -11,7 +11,7 @@ function Services() {
       <div className="container">
         <Title
           small={"Diensten"}
-          big={"Kwaliteit aan een scherpe prijs!"}
+          big={"Kwaliteit aan een scherpe prijs"}
           outline={"center"}
         ></Title>
         <div className="grid grid-cols-1 md:grid-cols-3 md:mt-16 ">

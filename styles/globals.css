@@ -62,9 +62,8 @@ a {
   background: white;
   max-width: fit-content;
   padding: 0.25rem .75rem;
-  margin: 0 auto;
   position: absolute;
-  left: 50% !important;
+  left: 47% !important;
   border-radius: 1rem;
   background-color: '#DFF6F2' !important;
   color: #85899C !important;
