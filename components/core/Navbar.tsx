@@ -4,7 +4,7 @@ import React from "react";
 export default function Navbar() {
   return (
     <>
-      <nav className="px-4 py-5 sticky top-0 font-medium z-50 backdrop-filter backdrop-blur-lg bg-opacity-30">
+      <nav className="px-4 py-5 sticky top-0 font-medium z-50 bg-white">
         <div className="container flex flex-wrap justify-between items-center">
           <a href="#" className="flex items-center justify-center">
             <img
