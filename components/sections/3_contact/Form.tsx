@@ -86,7 +86,7 @@ const Form = ({}: FormProps) => {
           <div className="text-center">
             <button
               type="submit"
-              className={`text-base text-center text-white bg-greenish font-semibold border-solid border-2 border-greenish rounded-xl px-5 py-2 my-5`}
+              className={`text-base text-center text-white font-semibold border-solid border-2 rounded-xl px-5 py-2 my-5 ${isSubmitting ? 'bg-gray border-gray' : 'bg-greenish border-greenish'}`}
               disabled={isSubmitting ? true : false}
             >
               Verzenden
