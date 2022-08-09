@@ -11,8 +11,8 @@ export default async function handler(req: any, res: any) {
     `;
 
     const dataTo = {
-      to: `twelektriciteitswerken@outlook.com`,
-      from: 'form@thijstracker.com',
+      to: `info@tw-elek.be`,
+      from: 'no-reply@tw-elek.be',
       subject:  `Contact: ${body.firstName} ${body.lastName}`,
       text: message,
       cc: ``,
@@ -23,7 +23,7 @@ export default async function handler(req: any, res: any) {
 
     const dataFrom = {
       to: body.mail,
-      from: 'form@thijstracker.com',
+      from: 'no-reply@tw-elek.be',
       subject: `TW Elektriciteitswerken - Uw vraag / offerte`,
       text: 'Uw bericht naar TW elektriciteitswerken:\n' + message,
       cc: ``,
