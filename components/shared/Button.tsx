@@ -8,7 +8,7 @@ type ButtonProps = {
     className?: string;
 }
 
-function Button({text, outline, className, callback}: ButtonProps) {
+const Button = ({text, outline, className, callback}: ButtonProps) => {
     if(outline == false){
         return <button type="button" onClick={callback} className={`text-base text-center text-white font-semibold bg-greenish rounded-2xl px-8 py-3 ${ className }`}>{ text }</button>
     } else {
