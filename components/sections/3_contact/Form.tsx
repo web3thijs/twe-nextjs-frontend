@@ -8,8 +8,7 @@ import Input from "../../shared/form/Input";
 import Modal from "../../shared/Modal";
 import Title from "../../shared/Title";
 
-type FormProps = {
-};
+type FormProps = {};
 
 const Form = ({}: FormProps) => {
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
@@ -48,7 +47,7 @@ const Form = ({}: FormProps) => {
         <form
           method="POST"
           onSubmit={submitForm}
-          className="p-3"
+          className="p-3 sm:p-6 text-gray caret-gray"
           id="contact-form"
         >
           <div className="mt-3 grid grid-cols-1 sm:grid-cols-2">
@@ -58,6 +57,7 @@ const Form = ({}: FormProps) => {
                 id={"firstName"}
                 type={"text"}
                 placeholder={"Voornaam"}
+                required
               ></Input>
             </div>
             <div className="mx-2 mt-5 sm:mt-0">
@@ -65,12 +65,18 @@ const Form = ({}: FormProps) => {
                 id={"lastName"}
                 type={"text"}
                 placeholder={"Achternaam"}
+                required
               ></Input>
             </div>
           </div>
 
           <div className="mx-2 mt-5">
-            <Input id={"mail"} type={"email"} placeholder={"E-mail"}></Input>
+            <Input
+              id={"mail"}
+              type={"email"}
+              placeholder={"E-mail"}
+              required
+            ></Input>
           </div>
 
           <div className="mx-2 mt-4">
@@ -78,15 +84,20 @@ const Form = ({}: FormProps) => {
               id="message"
               name="message"
               rows={10}
-              className="w-full px-7 py-5 rounded-xl border border-solid border-gray-light shadow-3xl"
+              className="w-full px-7 py-5 rounded-xl border border-solid border-gray-light shadow-3xl focus-visible:outline-greenish-light"
               placeholder="Bericht"
+              required
             ></textarea>
           </div>
 
           <div className="text-center">
             <button
               type="submit"
-              className={`text-base text-center text-white font-semibold border-solid border-2 rounded-xl px-5 py-2 my-5 ${isSubmitting ? 'bg-gray border-gray' : 'bg-greenish border-greenish'}`}
+              className={`text-base text-center text-white font-semibold border-solid border-2 rounded-xl px-5 py-2 my-5 ${
+                isSubmitting
+                  ? "bg-gray border-gray"
+                  : "bg-greenish border-greenish"
+              }`}
               disabled={isSubmitting ? true : false}
             >
               Verzenden
