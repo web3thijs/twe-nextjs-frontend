@@ -6,7 +6,7 @@ export default function Navbar() {
     <>
       <nav className="px-4 py-5 sticky top-0 font-medium z-50 bg-white">
         <div className="container flex flex-wrap justify-between items-center">
-          <a href="#" className="flex items-center justify-center">
+          <a href="./#" className="flex items-center justify-center">
             <img
               src="logo.svg"
               className="mr-3 h-6 sm:h-10"
@@ -44,7 +44,7 @@ export default function Navbar() {
             <Menu.Items className={"flex flex-col absolute bg-white p-6 top-20 right-0 shadow-3xl lg:hidden"}>
             <Menu.Item>
             <a
-                  href="#header"
+                  href="./#header"
                   className="text-blueish hover:text-greenish transition-all"
                 >
                   Home
@@ -52,7 +52,7 @@ export default function Navbar() {
               </Menu.Item>
               <Menu.Item>
               <a
-                  href="#services"
+                  href="./#services"
                   className="text-blueish hover:text-greenish transition-all"
                 >
                   Diensten
@@ -60,7 +60,7 @@ export default function Navbar() {
               </Menu.Item>
               <Menu.Item>
               <a
-                  href="#contact"
+                  href="./#contact"
                   className="text-blueish hover:text-greenish transition-all"
                 >
                   Contact
@@ -68,7 +68,7 @@ export default function Navbar() {
               </Menu.Item>
               <Menu.Item>
               <a
-                  href="#references"
+                  href="./#references"
                   className="text-blueish hover:text-greenish transition-all"
                 >
                   Realisaties
@@ -76,7 +76,7 @@ export default function Navbar() {
               </Menu.Item>
               <Menu.Item>
                 <a
-                  href="#reviews"
+                  href="./#reviews"
                   className="text-blueish hover:text-greenish transition-all"
                 >
                   Reviews
@@ -88,7 +88,7 @@ export default function Navbar() {
             <ul className="flex font-semibold">
               <li className="ml-14">
                 <a
-                  href="#header"
+                  href="./#header"
                   className="text-blueish hover:text-greenish transition-all"
                 >
                   Home
@@ -96,7 +96,7 @@ export default function Navbar() {
               </li>
               <li className="ml-14">
                 <a
-                  href="#services"
+                  href="./#services"
                   className="text-blueish hover:text-greenish transition-all"
                 >
                   Diensten
@@ -104,7 +104,7 @@ export default function Navbar() {
               </li>
               <li className="ml-14">
                 <a
-                  href="#contact"
+                  href="./#contact"
                   className="text-blueish hover:text-greenish transition-all"
                 >
                   Contact
@@ -112,7 +112,7 @@ export default function Navbar() {
               </li>
               <li className="ml-14">
                 <a
-                  href="#references"
+                  href="./#references"
                   className="text-blueish hover:text-greenish transition-all"
                 >
                   Realisaties
@@ -120,7 +120,7 @@ export default function Navbar() {
               </li>
               <li className="ml-14">
                 <a
-                  href="#reviews"
+                  href="./#reviews"
                   className="text-blueish hover:text-greenish transition-all"
                 >
                   Reviews
