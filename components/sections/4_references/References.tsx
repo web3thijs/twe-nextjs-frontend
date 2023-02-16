@@ -15,6 +15,7 @@ import "swiper/css/navigation";
 import { Autoplay, Navigation, Pagination } from "swiper";
 import React, { useRef } from "react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import ImageGallery from "./ImageGallery";
 
 function References() {
   const swiperSlideClass = "";
@@ -30,11 +31,21 @@ function References() {
             outline="center"
           ></Title>
         </div>
+        <ImageGallery
+            images={[
+              'https://via.placeholder.com/600x400',
+              'https://via.placeholder.com/400x600',
+              'https://via.placeholder.com/800x600',
+              'https://via.placeholder.com/600x800',
+              'https://via.placeholder.com/1200x800',
+              'https://via.placeholder.com/800x1200',
+            ]}
+          />
         <div className="h-[12rem] max-w-[18rem] xs:h-[26rem] xs:max-w-[48rem] mx-auto">
           <Swiper
             spaceBetween={30}
             pagination={{
-              type: 'fraction',
+              type: "fraction",
               clickable: true,
             }}
             autoplay={{
