@@ -6,10 +6,21 @@ import Header from "../components/sections/1_header/Header";
 import References from "../components/sections/4_references/References";
 import Reviews from "../components/sections/5_reviews/Reviews";
 import Services from "../components/sections/2_services/Services";
-import { GoogleReview, GoogleReviewsResponse } from "../types/reviews/GooleReviewsTypes";
-import { FacebookReview, FacebookReviewsResponse } from "../types/reviews/FacebookReviewsTypes";
+import {
+  GoogleReview,
+  GoogleReviewsResponse,
+} from "../types/reviews/GooleReviewsTypes";
+import {
+  FacebookReview,
+  FacebookReviewsResponse,
+} from "../types/reviews/FacebookReviewsTypes";
 
-const Home: NextPage = ({ data }: any) => {
+type Props = {
+  googleReviews: GoogleReview[];
+  facebookReviews: FacebookReview[];
+};
+
+const Home: NextPage<{ data: Props }> = ({ data }) => {
   return (
     <>
       <Head>
@@ -44,8 +55,8 @@ export default Home;
 // Static props to get reviews on daily basis (renders static page every day)
 export async function getStaticProps() {
   const revalidate = 60 * 60 * 24;
-  let googleReviews: GoogleReview[] = []
-  let facebookReviews: FacebookReview[] = []
+  let googleReviews: GoogleReview[] = [];
+  let facebookReviews: FacebookReview[] = [];
 
   // Fetch google reviews
   try {
@@ -54,13 +65,12 @@ export async function getStaticProps() {
     );
 
     const data: GoogleReviewsResponse = await response.json();
-    
-    if(!data.status || data.status !== "OK") {
-      googleReviews = []
+
+    if (!data.status || data.status !== "OK") {
+      googleReviews = [];
     }
 
-    googleReviews = data.result.reviews
-
+    googleReviews = data.result.reviews;
   } catch (error) {
     console.error(error);
   }
@@ -72,13 +82,12 @@ export async function getStaticProps() {
     );
 
     const data: FacebookReviewsResponse = await response.json();
-    
-    if(!data.data) {
-      googleReviews = []
+
+    if (!data.data) {
+      facebookReviews = [];
     }
 
-    facebookReviews = data.data
-
+    facebookReviews = data.data;
   } catch (error) {
     console.error(error);
   }
@@ -87,8 +96,8 @@ export async function getStaticProps() {
     props: {
       data: {
         googleReviews,
-        facebookReviews
-      }
-    }
-  }
+        facebookReviews,
+      },
+    },
+  };
 }
