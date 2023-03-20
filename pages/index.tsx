@@ -44,7 +44,10 @@ const Home: NextPage<{ data: Props }> = ({ data }) => {
       </section>
 
       <section className="py-32" id="reviews">
-        <Reviews></Reviews>
+        <Reviews
+          googleReviews={data.googleReviews}
+          facebookReviews={data.facebookReviews}
+        ></Reviews>
       </section>
     </>
   );
@@ -99,5 +102,6 @@ export async function getStaticProps() {
         facebookReviews,
       },
     },
+    // revalidate,
   };
 }
