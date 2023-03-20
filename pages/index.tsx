@@ -6,8 +6,10 @@ import Header from "../components/sections/1_header/Header";
 import References from "../components/sections/4_references/References";
 import Reviews from "../components/sections/5_reviews/Reviews";
 import Services from "../components/sections/2_services/Services";
+import { GoogleReview, GoogleReviewsResponse } from "../types/reviews/GooleReviewsTypes";
+import { FacebookReview, FacebookReviewsResponse } from "../types/reviews/FacebookReviewsTypes";
 
-const Home: NextPage = () => {
+const Home: NextPage = ({ data }: any) => {
   return (
     <>
       <Head>
@@ -38,3 +40,55 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+// Static props to get reviews on daily basis (renders static page every day)
+export async function getStaticProps() {
+  const revalidate = 60 * 60 * 24;
+  let googleReviews: GoogleReview[] = []
+  let facebookReviews: FacebookReview[] = []
+
+  // Fetch google reviews
+  try {
+    const response = await fetch(
+      `https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJ4zOFz-jLxkcRgY8UTuVdj_Q&fields=reviews&key=${process.env.GOOGLE_API}&language=nl`
+    );
+
+    const data: GoogleReviewsResponse = await response.json();
+    
+    if(!data.status || data.status !== "OK") {
+      googleReviews = []
+    }
+
+    googleReviews = data.result.reviews
+
+  } catch (error) {
+    console.error(error);
+  }
+
+  // Fetch facebook reviews
+  try {
+    const response = await fetch(
+      `https://graph.facebook.com/v16.0/101539501828864/ratings?access_token=${process.env.FACEBOOK_API}`
+    );
+
+    const data: FacebookReviewsResponse = await response.json();
+    
+    if(!data.data) {
+      googleReviews = []
+    }
+
+    facebookReviews = data.data
+
+  } catch (error) {
+    console.error(error);
+  }
+
+  return {
+    props: {
+      data: {
+        googleReviews,
+        facebookReviews
+      }
+    }
+  }
+}
