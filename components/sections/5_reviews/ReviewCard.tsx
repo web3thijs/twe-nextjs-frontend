@@ -6,7 +6,7 @@ type Props = {
 
 const ReviewCard = ({text}: Props) => {
   return (
-    <div className="mt-6 lg:my-auto bg-white p-6 rounded-xl border border-solid border-gray-light shadow-3xl w-full">
+    <div className="mt-6 lg:my-auto bg-white p-6 rounded-xl border border-solid border-grey-light shadow-3xl w-full">
       <Image
         alt="Quote"
         src={"/reviews/quote.svg"}

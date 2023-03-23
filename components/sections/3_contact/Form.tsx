@@ -43,7 +43,7 @@ const Form = ({}: FormProps) => {
 
   return (
     <>
-      <div className="bg-white  border border-solid border-gray-light rounded-2xl shadow-3xl">
+      <div className="bg-white  border border-solid border-grey-light rounded-2xl shadow-3xl">
         <form
           method="POST"
           onSubmit={submitForm}
@@ -84,7 +84,7 @@ const Form = ({}: FormProps) => {
               id="message"
               name="message"
               rows={10}
-              className="w-full px-7 py-5 rounded-xl border border-solid border-gray-light shadow-3xl focus-visible:outline-greenish-light"
+              className="w-full px-7 py-5 rounded-xl border border-solid border-grey-light shadow-3xl focus-visible:outline-greenish-light"
               placeholder="Bericht"
               required
             ></textarea>

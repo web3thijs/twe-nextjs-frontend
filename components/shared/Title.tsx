@@ -12,7 +12,7 @@ function Title({ small, big, outline = 'left' }: TitleProps) {
         ${outline == "center" && "mx-auto text-center"}
         ${outline == "right" && "ml-auto text-right"}
     `}>
-      <p className={`text-gray font-semibold text-sm sm:text-xl mb-1`}>
+      <p className={`text-grey font-semibold text-sm sm:text-xl mb-1`}>
         {small}
       </p>
       <p className={`text-3xl sm:text-5xl font-bold text-blueish`}>{big}</p>

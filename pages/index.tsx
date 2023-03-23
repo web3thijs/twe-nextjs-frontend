@@ -81,7 +81,7 @@ export async function getStaticProps() {
   // Fetch facebook reviews
   try {
     const response = await fetch(
-      `https://graph.facebook.com/v16.0/101539501828864/ratings?access_token=${process.env.FACEBOOK_API}`
+      `https://graph.facebook.com/v16.0/101539501828864/ratings?fields=created_time,has_rating,has_review,rating,recommendation_type,review_text,reviewer&access_token=${process.env.FACEBOOK_API}`
     );
 
     const data: FacebookReviewsResponse = await response.json();

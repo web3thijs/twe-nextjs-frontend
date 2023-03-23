@@ -12,7 +12,7 @@ type ButtonProps = {
 
 function Column({img, title, rows}: ButtonProps) {
     return <>
-        <div className="mx-auto mt-6 md:mt-0 bg-white pt-8 pb-12 px-16 md:px-8 lg:px-12 xl:px-24 rounded-3xl w-fit border border-solid border-gray-light shadow-3xl">
+        <div className="mx-auto mt-6 md:mt-0 bg-white pt-8 pb-12 px-16 md:px-8 lg:px-12 xl:px-24 rounded-3xl w-fit border border-solid border-grey-light shadow-3xl">
             <div className="flex ml-3 sm:ml-3 sm:inline text-center">
                 <div className="relative z-0 mr-5 mb-4 sm:mx-auto">
                     <FontAwesomeIcon icon={faLightbulb as IconProp} size={'4x'} className={'text-blueish'}/>

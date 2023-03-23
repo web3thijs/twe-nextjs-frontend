@@ -79,7 +79,7 @@ function Contact() {
             </div>
             {/* <a
               href="tel: +32471 25 39 84"
-              className="flex bg-white border border-solid border-gray-light rounded-xl w-full sm:w-11/12 py-5 px-7 shadow-3xl"
+              className="flex bg-white border border-solid border-grey-light rounded-xl w-full sm:w-11/12 py-5 px-7 shadow-3xl"
             >
               <FontAwesomeIcon
                 icon={faPhone as IconProp}
@@ -89,7 +89,7 @@ function Contact() {
             </a>
             <a
               href="mailto: twelektriciteitswerken@outlook.com"
-              className="flex bg-white border border-solid border-gray-light rounded-xl w-full sm:sm:w-11/12 py-5 px-7 shadow-3xl"
+              className="flex bg-white border border-solid border-grey-light rounded-xl w-full sm:sm:w-11/12 py-5 px-7 shadow-3xl"
             >
               <FontAwesomeIcon
                 icon={faEnvelope as IconProp}

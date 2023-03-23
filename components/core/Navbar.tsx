@@ -15,7 +15,7 @@ export default function Navbar() {
             <p className="text-blueish font-semibold text-2xl">TWe</p>
           </a>
           <Menu>
-            <Menu.Button className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-xl lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+            <Menu.Button className="inline-flex items-center p-2 ml-3 text-sm text-grey-500 rounded-xl lg:hidden hover:bg-grey-100 focus:outline-none focus:ring-2 focus:ring-grey-200 dark:text-grey-400 dark:hover:bg-grey-700 dark:focus:ring-grey-600">
               <svg
                 className="w-6 h-6"
                 fill="currentColor"
