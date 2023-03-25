@@ -102,6 +102,6 @@ export async function getStaticProps() {
         facebookReviews,
       },
     },
-    // revalidate,
+    revalidate,
   };
 }
