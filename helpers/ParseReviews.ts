@@ -54,17 +54,16 @@ const parseReviews = (googleReviews: GoogleReview[], facebookReviews: FacebookRe
     const nonGoogleReviews = trimmedReviews.filter((review) => review.origin === 'Facebook');
 
     const slicedGoogleReviews = googleReviewsParsed.slice(0, 3);
-    const slicedNonGoogleReviews = nonGoogleReviews.slice(0, 5);
+    const slicedNonGoogleReviews = nonGoogleReviews.slice(0, 4);
 
     const firstGoogleReview = slicedGoogleReviews[0];
     const remainingShuffledGoogleReviews = slicedGoogleReviews.slice(1);
 
     const shuffledReviews = [
+        ...slicedNonGoogleReviews.slice(1, 4),
+        ...remainingShuffledGoogleReviews,
         firstGoogleReview,
-        ...shuffleArray([
-            ...remainingShuffledGoogleReviews,
-            ...slicedNonGoogleReviews,
-        ]),
+        ...slicedNonGoogleReviews.slice(0, 1),
     ];
 
     return shuffledReviews;
