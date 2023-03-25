@@ -18,6 +18,9 @@ module.exports = {
         'blueish-light': '#EEF1FF',
         'temp-purple': '#7E57C2'
       },
+      boxShadow: {
+        '3xl': '0 1px 4px 0 rgb(20 20 43 / 1%), 0 3px 6px 0 rgb(51 71 255 / 1%), 0 4px 22px 0 rgb(21 19 91 / 4%)',
+      },
     },
     container: {
       center: true,
@@ -39,9 +42,6 @@ module.exports = {
       'lg': '1024px',
       'xl': '1280px',
       '2xl': '1536px',
-    },
-    boxShadow: {
-      '3xl': '0 1px 4px 0 rgb(20 20 43 / 1%), 0 3px 6px 0 rgb(51 71 255 / 1%), 0 4px 22px 0 rgb(21 19 91 / 4%)',
     },
   },
   plugins: [],
