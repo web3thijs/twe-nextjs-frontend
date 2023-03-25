@@ -14,6 +14,7 @@
     "@fortawesome/react-fontawesome": "^0.1.17",
     "@glidejs/glide": "^3.5.2",
     "@headlessui/react": "^1.6.6",
+    "@heroicons/react": "^2.0.16",
     "@sendgrid/mail": "^7.6.2",
     "locomotive-scroll": "^4.1.4",
     "next": "^12.1.0",
