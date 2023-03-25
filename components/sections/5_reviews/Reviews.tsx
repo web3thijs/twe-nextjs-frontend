@@ -20,9 +20,7 @@ const Reviews = ({ googleReviews, facebookReviews }: Props) => {
   const [reviews, setReviews] = useState<ParsedReview[]>();
 
   useEffect(() => {
-    setReviews(
-      parseReviews(googleReviews, facebookReviews)
-    );
+    setReviews(parseReviews(googleReviews, facebookReviews));
   }, [googleReviews, facebookReviews]);
 
   if (!reviews) return <p>No reviews</p>;
@@ -30,13 +28,13 @@ const Reviews = ({ googleReviews, facebookReviews }: Props) => {
   return (
     <>
       <div className="container">
+        <Title
+          outline="center"
+          small={"Reviews"}
+          big={"Wat vonden de klanten van onze service?"}
+        ></Title>
         <div className="grid lg:grid-cols-2 lg:space-x-6">
           <div className="">
-            <Title
-            outline="center"
-              small={"Reviews"}
-              big={"Wat vonden de klanten van onze service?"}
-            ></Title>
             <div className="mt-6">
               {/* <div className="flex content-center">
                 <div className="relative w-8 h-8">
