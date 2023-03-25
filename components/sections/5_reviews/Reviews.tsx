@@ -152,14 +152,14 @@ const Reviews = ({ googleReviews, facebookReviews }: Props) => {
                 <a
                   className="cursor-pointer text-greenish underline text-sm"
                   href="https://www.google.com/maps/place/TW+Elek+BV/@51.1216653,5.162142,17z/data=!3m1!4b1!4m6!3m5!1s0x47c6cbe8cf8533e3:0xf48f5de54e148f81!8m2!3d51.1216653!4d5.162142!16s%2Fg%2F11rn0wjv_l"
-                  target={"_blank"}
+                  target={"_blank"} rel="noreferrer"
                 >
                   <span className="text-sm">Google</span>
                 </a>{" "}
                 en{" "}
                 <a
                   className="cursor-pointer text-greenish underline text-sm"
-                  target={"_blank"}
+                  target={"_blank"} rel="noreferrer"
                   href="https://www.facebook.com/TwElekBV/reviews"
                 >
                   <span className="text-sm">Facebook</span>
