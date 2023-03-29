@@ -5,6 +5,7 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import { useRef } from "react";
+import { Analytics } from '@vercel/analytics/react';
 
 config.autoAddCss = false;
 
@@ -12,11 +13,15 @@ function MyApp({ Component, pageProps }: AppProps) {
   const containerRef = useRef(null);
 
   return (
+    <>
       <Layout>
         <main data-scroll-container ref={containerRef}>
           <Component {...pageProps} />
         </main>
       </Layout>
+
+      <Analytics />
+    </>
   );
 }
 
