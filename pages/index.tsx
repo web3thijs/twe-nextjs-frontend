@@ -31,7 +31,7 @@ const Home: NextPage<{ data: Props }> = ({ data }) => {
         <Header></Header>
       </section>
 
-      <section className="bg-offwhite py-32" id="services">
+      <section id="services">
         <Services></Services>
       </section>
 
