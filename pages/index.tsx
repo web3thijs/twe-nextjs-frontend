@@ -31,19 +31,19 @@ const Home: NextPage<{ data: Props }> = ({ data }) => {
         <Header></Header>
       </section>
 
-      <section className="bg-offwhite py-32" id="services">
+      <section id="services">
         <Services></Services>
       </section>
 
-      <section className="py-32" id="contact">
+      <section className="py-24" id="contact">
         <Contact></Contact>
       </section>
 
-      <section className="bg-offwhite py-32" id="references">
+      <section className="bg-offwhite py-24" id="references">
         <References></References>
       </section>
 
-      <section className="py-32" id="reviews">
+      <section className="py-24" id="reviews">
         <Reviews
           googleReviews={data.googleReviews}
           facebookReviews={data.facebookReviews}

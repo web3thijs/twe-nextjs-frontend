@@ -13,9 +13,9 @@ module.exports = {
         'grey': '#85899C',
         'grey-light': '#F1F1F1',
         'greenish': '#7EB6AD',
-        'greenish-light': '#DFF6F2',
+        'greenish-light': '#8BC9BF',
         'blueish': '#212949',
-        'blueish-light': '#EEF1FF',
+        'blueish-light': '#92D4C9',
         'temp-purple': '#7E57C2'
       },
       boxShadow: {
