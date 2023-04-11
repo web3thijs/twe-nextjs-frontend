@@ -1,5 +1,3 @@
 {
-  "github": {
-    "enable": false
-  }
+  "github": false
 }
