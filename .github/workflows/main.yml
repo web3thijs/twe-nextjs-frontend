@@ -8,6 +8,7 @@ on:
       - main
 jobs:
   prepare:
+    name: Build & test
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -16,19 +17,6 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      
-      - name: Cache Vercel CLI
-        id: cache-vercel
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: vercel-cli-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            vercel-cli-${{ runner.os }}-
-
-      - name: Install Vercel CLI
-        if: steps.cache-vercel.outputs.cache-hit != 'true'
-        run: npm install --global vercel@latest
       
       - name: SonarCloud Scan
         if: matrix.job == 'SonarCloud'
@@ -40,6 +28,7 @@ jobs:
       - name: Build Project Artifacts
         if: matrix.job == 'Build'
         run: |
+          npm install --global vercel@latest
           vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
           vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
 
@@ -48,20 +37,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      
-      - name: Cache Vercel CLI
-        id: cache-vercel
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: vercel-cli-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            vercel-cli-${{ runner.os }}-
-
       - name: Install Vercel CLI
-        if: steps.cache-vercel.outputs.cache-hit != 'true'
         run: npm install --global vercel@latest
-      
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
       - name: Deploy Project Artifacts to Vercel
