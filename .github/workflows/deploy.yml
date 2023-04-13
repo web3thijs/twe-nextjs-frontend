@@ -1,0 +1,40 @@
+name: Vercel Deployment
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+on:
+  push:
+    branches:
+      - main
+      - release/*
+      - feature/*
+      - bugfix/*
+jobs:
+  build_and_deploy:
+    name: Build, test, and deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set BUILD_TYPE environment variable
+        run: echo "BUILD_TYPE=$(if [[ $GITHUB_REF == 'refs/heads/main' || $GITHUB_REF == refs/heads/release/* || $GITHUB_REF == refs/heads/bugfix/* ]]; then echo 'production'; else echo 'preview'; fi)" >> $GITHUB_ENV
+
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=${{ env.BUILD_TYPE }} --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build Project Artifacts
+        run: vercel build ${{ env.BUILD_TYPE == 'production' && '--prod' }} --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy Project Artifacts to Vercel
+        run: vercel deploy --prebuilt ${{ env.BUILD_TYPE == 'production' && '--prod' || '' }} --token=${{ secrets.VERCEL_TOKEN }}
