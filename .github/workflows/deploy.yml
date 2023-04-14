@@ -18,37 +18,33 @@ jobs:
         job: [SonarCloud, OWASP]
     steps:
       - uses: actions/checkout@v3
-        if: matrix.job == 'SonarCloud'
-        with:
-          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
 
       - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
         if: matrix.job == 'SonarCloud'
+        uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-          # Add OWASP Dependency-Check step
       - name: OWASP Dependency-Check
-        uses: dependency-check/Dependency-Check_Action@main
         if: matrix.job == 'OWASP'
+        uses: dependency-check/Dependency-Check_Action@main
         id: Depcheck
         with:
-          project: 'test'
-          path: '.'
-          format: 'ALL'
+          project: "test"
+          path: "."
+          format: "ALL"
           args: >
             --failOnCVSS 4
             --enableRetired
-                  
+
       - name: Upload OWASP Dependency-Check results
-        uses: actions/upload-artifact@v3
         if: matrix.job == 'OWASP' && always()
+        uses: actions/upload-artifact@v3
         with:
           name: Depcheck report
           path: ${{github.workspace}}/reports
-          
+
   build_and_deploy:
     name: Build and deploy
     needs: testing
@@ -60,7 +56,7 @@ jobs:
     steps:
       - name: Set BUILD_TYPE environment variable
         run: echo "BUILD_TYPE=$(if [[ $GITHUB_REF == 'refs/heads/main' || $GITHUB_REF == refs/heads/release/* || $GITHUB_REF == refs/heads/bugfix/* ]]; then echo 'production'; else echo 'preview'; fi)" >> $GITHUB_ENV
-      
+
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
 
