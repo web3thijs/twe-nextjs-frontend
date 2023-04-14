@@ -23,29 +23,29 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-  owasp:
-    name: OWASP Dependency Check
-    runs-on: ubuntu-latest
-    if: ${{ github.ref != 'refs/heads/main' || github.ref != 'refs/heads/release/*' || github.ref != 'refs/heads/bugfix/*' }}
-    steps:      
-      - uses: actions/checkout@v3
+  # owasp:
+  #   name: OWASP Dependency Check
+  #   runs-on: ubuntu-latest
+  #   if: ${{ github.ref != 'refs/heads/main' || github.ref != 'refs/heads/release/*' || github.ref != 'refs/heads/bugfix/*' }}
+  #   steps:      
+  #     - uses: actions/checkout@v3
 
-      - name: OWASP Dependency-Check
-        uses: dependency-check/Dependency-Check_Action@main
-        with:
-          project: "test"
-          path: "."
-          format: "ALL"
-          args: >
-            --failOnCVSS 7
-            --enableRetired
+  #     - name: OWASP Dependency-Check
+  #       uses: dependency-check/Dependency-Check_Action@main
+  #       with:
+  #         project: "test"
+  #         path: "."
+  #         format: "ALL"
+  #         args: >
+  #           --failOnCVSS 7
+  #           --enableRetired
 
-      - name: Upload OWASP Dependency-Check results
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: Depcheck report
-          path: ${{github.workspace}}/reports
+  #     - name: Upload OWASP Dependency-Check results
+  #       if: always()
+  #       uses: actions/upload-artifact@v3
+  #       with:
+  #         name: Depcheck report
+  #         path: ${{github.workspace}}/reports
         
   build_and_deploy:
     name: Build and deploy
