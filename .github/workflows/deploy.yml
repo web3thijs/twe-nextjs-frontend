@@ -9,57 +9,51 @@ on:
       - release/*
       - feature/*
       - bugfix/*
-jobs:
+jobs:  
   sonarcloud:
-    runs-on: ubuntu-latest
+    name: SonarCloud
+    runs-ons: ubuntu-latest
+    if: ${{ github.ref != 'refs/heads/main' || github.ref != 'refs/heads/release/*' || github.ref != 'refs/heads/bugfix/*' }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+
       - name: SonarCloud Scan
+        if: matrix.job == 'SonarCloud'
         uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   owasp:
+    name: Build and deploy
     runs-on: ubuntu-latest
+    if: ${{ github.ref != 'refs/heads/main' || github.ref != 'refs/heads/release/*' || github.ref != 'refs/heads/bugfix/*' }}
     steps:
-      - uses: actions/checkout@v2
       - name: OWASP Dependency-Check
-        uses: dependency-check/Dependency-Check_Action@main
-        id: Depcheck
+        uses: dependency-check/Dependency-Check_Action@v2
         with:
-          project: 'test'
-          path: '.'
-          format: 'ALL'
+          project: "test"
+          path: "."
+          format: "ALL"
           args: >
             --failOnCVSS 4
             --enableRetired
-          
+
       - name: Upload OWASP Dependency-Check results
         if: always()
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: Depcheck report
           path: ${{github.workspace}}/reports
-
+          
   build_and_deploy:
     name: Build and deploy
-    needs:
-      sonarcloud:
-        runs-on: ubuntu-latest
-      owasp:
-        runs-on: ubuntu-latest
-    if: |
-      always() &&
-      !contains(needs.sonarcloud.result, 'failure') &&
-      !contains(needs.sonarcloud.result, 'cancelled') &&
-      !contains(needs.owasp.result, 'failure') &&
-      !contains(needs.owasp.result, 'cancelled')
+    needs: ['sonarcloud', 'owasp']
     runs-on: ubuntu-latest
     steps:
       - name: Set BUILD_TYPE environment variable
         run: echo "BUILD_TYPE=$(if [[ $GITHUB_REF == 'refs/heads/main' || $GITHUB_REF == refs/heads/release/* || $GITHUB_REF == refs/heads/bugfix/* ]]; then echo 'production'; else echo 'preview'; fi)" >> $GITHUB_ENV
-      
+
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
 
@@ -70,4 +64,4 @@ jobs:
         run: vercel build ${{ env.BUILD_TYPE == 'production' && '--prod' }} --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy Project Artifacts to Vercel
-        run: vercel deploy --pre
+        run: vercel deploy --prebuilt ${{ env.BUILD_TYPE == 'production' && '--prod' || '' }} --token=${{ secrets.VERCEL_TOKEN }}
