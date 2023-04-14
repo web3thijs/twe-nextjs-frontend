@@ -1,4 +1,7 @@
 name: Vercel Deployment
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 on:
   push:
     branches:
@@ -6,30 +9,30 @@ on:
       - release/*
       - feature/*
       - bugfix/*
-
 jobs:
   testing:
+    if: ${{ github.ref != 'refs/heads/main' || github.ref != 'refs/heads/release/*' || github.ref != 'refs/heads/bugfix/*' }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        scan-step:
-          - SonarCloud Scan
-          - OWASP Dependency-Check
+        job: [SonarCloud, OWASP]
     steps:
       - uses: actions/checkout@v3
+        if: matrix.job == 'SonarCloud'
         with:
-          fetch-depth: 0
+          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
 
-      - name: ${{ matrix.scan-step }}
-        if: matrix.scan-step == 'SonarCloud Scan'
+      - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
+        if: matrix.job == 'SonarCloud'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          
-      - name: ${{ matrix.scan-step }}
-        if: matrix.scan-step == 'OWASP Dependency-Check'
+
+          # Add OWASP Dependency-Check step
+      - name: OWASP Dependency-Check
         uses: dependency-check/Dependency-Check_Action@main
+        if: matrix.job == 'OWASP'
         id: Depcheck
         with:
           project: 'test'
@@ -38,10 +41,10 @@ jobs:
           args: >
             --failOnCVSS 4
             --enableRetired
-
+                  
       - name: Upload OWASP Dependency-Check results
-        if: always() && matrix.scan-step == 'OWASP Dependency-Check'
         uses: actions/upload-artifact@v3
+        if: matrix.job == 'OWASP' && always()
         with:
           name: Depcheck report
           path: ${{github.workspace}}/reports
