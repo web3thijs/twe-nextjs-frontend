@@ -10,53 +10,56 @@ on:
       - feature/*
       - bugfix/*
 jobs:
-  testing:
-    if: ${{ github.ref != 'refs/heads/main' || github.ref != 'refs/heads/release/*' || github.ref != 'refs/heads/bugfix/*' }}
+  sonarcloud:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        job: [SonarCloud, OWASP]
     steps:
-      - uses: actions/checkout@v3
-
+      - uses: actions/checkout@v2
       - name: SonarCloud Scan
-        if: matrix.job == 'SonarCloud'
         uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
+  owasp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
       - name: OWASP Dependency-Check
-        if: matrix.job == 'OWASP'
         uses: dependency-check/Dependency-Check_Action@main
         id: Depcheck
         with:
-          project: "test"
-          path: "."
-          format: "ALL"
+          project: 'test'
+          path: '.'
+          format: 'ALL'
           args: >
             --failOnCVSS 4
             --enableRetired
-
+          
       - name: Upload OWASP Dependency-Check results
-        if: matrix.job == 'OWASP' && always()
-        uses: actions/upload-artifact@v3
+        if: always()
+        uses: actions/upload-artifact@v2
         with:
           name: Depcheck report
           path: ${{github.workspace}}/reports
 
   build_and_deploy:
     name: Build and deploy
-    needs: testing
+    needs:
+      sonarcloud:
+        runs-on: ubuntu-latest
+      owasp:
+        runs-on: ubuntu-latest
     if: |
       always() &&
-      !contains(needs.testing.result, 'failure') &&
-      !contains(needs.testing.result, 'cancelled')
+      !contains(needs.sonarcloud.result, 'failure') &&
+      !contains(needs.sonarcloud.result, 'cancelled') &&
+      !contains(needs.owasp.result, 'failure') &&
+      !contains(needs.owasp.result, 'cancelled')
     runs-on: ubuntu-latest
     steps:
       - name: Set BUILD_TYPE environment variable
         run: echo "BUILD_TYPE=$(if [[ $GITHUB_REF == 'refs/heads/main' || $GITHUB_REF == refs/heads/release/* || $GITHUB_REF == refs/heads/bugfix/* ]]; then echo 'production'; else echo 'preview'; fi)" >> $GITHUB_ENV
-
+      
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
 
@@ -67,4 +70,4 @@ jobs:
         run: vercel build ${{ env.BUILD_TYPE == 'production' && '--prod' }} --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy Project Artifacts to Vercel
-        run: vercel deploy --prebuilt ${{ env.BUILD_TYPE == 'production' && '--prod' || '' }} --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel deploy --pre
