@@ -11,7 +11,7 @@ on:
       - bugfix/*
 jobs:
   testing:
-    if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/release/*' || github.ref == 'refs/heads/bugfix/*' }}
+    if: ${{ github.ref != 'refs/heads/main' || github.ref != 'refs/heads/release/*' || github.ref != 'refs/heads/bugfix/*' }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -21,9 +21,6 @@ jobs:
           - name: OWASP Dependency-Check
             scan-step: owasp
     steps:
-      - name: Set BUILD_TYPE environment variable
-        run: echo "BUILD_TYPE=$(if [[ $GITHUB_REF == 'refs/heads/main' || $GITHUB_REF == refs/heads/release/* || $GITHUB_REF == refs/heads/bugfix/* ]]; then echo 'production'; else echo 'preview'; fi)" >> $GITHUB_ENV
-
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
@@ -55,7 +52,10 @@ jobs:
           
   build_and_deploy:
     name: Build and deploy
-    needs: testing
+    if: |
+      always() &&
+      !contains(needs.testing.result, 'failure') &&
+      !contains(needs.testing.result, 'cancelled')
     runs-on: ubuntu-latest
     steps:
       - name: Set BUILD_TYPE environment variable
