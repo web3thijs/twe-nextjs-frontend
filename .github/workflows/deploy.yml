@@ -25,12 +25,12 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   owasp:
-    name: Build and deploy
+    name: OWASP Dependency Check
     runs-on: ubuntu-latest
     if: ${{ github.ref != 'refs/heads/main' || github.ref != 'refs/heads/release/*' || github.ref != 'refs/heads/bugfix/*' }}
     steps:
       - name: OWASP Dependency-Check
-        uses: dependency-check/Dependency-Check_Action@v2
+        uses: dependency-check/Dependency-Check_Action@v3
         with:
           project: "test"
           path: "."
