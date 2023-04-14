@@ -28,11 +28,9 @@ jobs:
     name: OWASP Dependency Check
     runs-on: ubuntu-latest
     if: ${{ github.ref != 'refs/heads/main' || github.ref != 'refs/heads/release/*' || github.ref != 'refs/heads/bugfix/*' }}
-    steps:
-      - uses: actions/checkout@v3
-      
+    steps:      
       - name: OWASP Dependency-Check
-        uses: dependency-check/Dependency-Check_Action@v2
+        uses: dependency-check/Dependency-Check_Action@main
         with:
           project: "test"
           path: "."
