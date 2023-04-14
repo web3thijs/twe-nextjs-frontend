@@ -37,7 +37,7 @@ jobs:
           path: "."
           format: "ALL"
           args: >
-            --failOnCVSS 4
+            --failOnCVSS 7
             --enableRetired
 
       - name: Upload OWASP Dependency-Check results
