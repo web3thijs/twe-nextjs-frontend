@@ -22,6 +22,20 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+ 
+  eslint:
+    name: ESLint
+    runs-on: ubuntu-latest
+    if: ${{ github.ref != 'refs/heads/main' || github.ref != 'refs/heads/release/*' || github.ref != 'refs/heads/bugfix/*' }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install modules
+        run: yarn
+        
+      - name: Run ESLint
+        run: eslint . --ext .js,.jsx,.ts,.tsx
+
 
   # owasp:
   #   name: OWASP Dependency Check
@@ -49,7 +63,7 @@ jobs:
         
   build_and_deploy:
     name: Build and deploy
-    needs: ['sonarcloud', 'owasp']
+    needs: ['sonarcloud', 'eslint']
     runs-on: ubuntu-latest
     steps:
       - name: Set BUILD_TYPE environment variable
