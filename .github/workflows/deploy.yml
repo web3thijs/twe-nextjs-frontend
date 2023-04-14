@@ -12,7 +12,7 @@ on:
 jobs:  
   sonarcloud:
     name: SonarCloud
-    runs-ons: ubuntu-latest
+    runs-on: ubuntu-latest
     if: ${{ github.ref != 'refs/heads/main' || github.ref != 'refs/heads/release/*' || github.ref != 'refs/heads/bugfix/*' }}
     steps:
       - uses: actions/checkout@v3
@@ -45,7 +45,7 @@ jobs:
         with:
           name: Depcheck report
           path: ${{github.workspace}}/reports
-          
+        
   build_and_deploy:
     name: Build and deploy
     needs: ['sonarcloud', 'owasp']
