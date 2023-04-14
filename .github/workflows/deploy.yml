@@ -10,9 +10,15 @@ on:
       - feature/*
       - bugfix/*
 jobs:
-  build_and_deploy:
-    name: Build, test, and deploy
-    runs-on: ubuntu-latest
+  testing:
+    if: ${{ matrix.branch == 'refs/heads/main' || matrix.branch == 'refs/heads/release/*' || matrix.branch == 'refs/heads/bugfix/*' }}
+    strategy:
+      matrix:
+        include:
+          - name: SonarCloud Scan
+            scan-step: sonarcloud
+          - name: OWASP Dependency-Check
+            scan-step: owasp
     steps:
       - name: Set BUILD_TYPE environment variable
         run: echo "BUILD_TYPE=$(if [[ $GITHUB_REF == 'refs/heads/main' || $GITHUB_REF == refs/heads/release/* || $GITHUB_REF == refs/heads/bugfix/* ]]; then echo 'production'; else echo 'preview'; fi)" >> $GITHUB_ENV
@@ -44,7 +50,15 @@ jobs:
         with:
           name: Depcheck report
           path: ${{github.workspace}}/reports
-
+          
+  build_and_deploy:
+    name: Build and deploy
+    needs: testing
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set BUILD_TYPE environment variable
+        run: echo "BUILD_TYPE=$(if [[ $GITHUB_REF == 'refs/heads/main' || $GITHUB_REF == refs/heads/release/* || $GITHUB_REF == refs/heads/bugfix/* ]]; then echo 'production'; else echo 'preview'; fi)" >> $GITHUB_ENV
+      
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
 
