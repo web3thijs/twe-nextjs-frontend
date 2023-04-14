@@ -11,7 +11,7 @@ on:
       - bugfix/*
 jobs:
   testing:
-    if: ${{ matrix.branch == 'refs/heads/main' || matrix.branch == 'refs/heads/release/*' || matrix.branch == 'refs/heads/bugfix/*' }}
+    if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/release/*' || github.ref == 'refs/heads/bugfix/*' }}
     strategy:
       matrix:
         include:
@@ -47,6 +47,7 @@ jobs:
                   
       - name: Upload OWASP Dependency-Check results
         uses: actions/upload-artifact@v3
+        if: always()
         with:
           name: Depcheck report
           path: ${{github.workspace}}/reports
