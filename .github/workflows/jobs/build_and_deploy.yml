@@ -1,0 +1,23 @@
+name: Build and deploy
+
+build_and_deploy:
+  name: Build and deploy
+  needs: ['sonarcloud', 'eslint', 'owasp']
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v3
+
+    - name: Set BUILD_TYPE environment variable
+      run: echo "BUILD_TYPE=$(if [[ $GITHUB_REF == 'refs/heads/main' || $GITHUB_REF == refs/heads/release/* || $GITHUB_REF == refs/heads/bugfix/* ]]; then echo 'production'; else echo 'preview'; fi)" >> $GITHUB_ENV
+
+    - name: Install Vercel CLI
+      run: npm install --global vercel@latest
+
+    - name: Pull Vercel Environment Information
+      run: vercel pull --yes --environment=${{ env.BUILD_TYPE }} --token=${{ secrets.VERCEL_TOKEN }}
+
+    - name: Build Project Artifacts
+      run: vercel build ${{ env.BUILD_TYPE == 'production' && '--prod' || '' }} --token=${{ secrets.VERCEL_TOKEN }}
+
+    - name: Deploy Project Artifacts to Vercel
+      run: vercel deploy --prebuilt ${{ env.BUILD_TYPE == 'production' && '--prod' || '' }} --token=${{ secrets.VERCEL_TOKEN }}
