@@ -1,0 +1,22 @@
+name: OWASP Dependency Check
+
+on:
+  workflow_call:
+
+jobs:
+  owasp:
+    name: OWASP Dependency Check
+    runs-on: ubuntu-latest
+    if: ${{ github.ref != 'refs/heads/main' || github.ref != 'refs/heads/release/*' || github.ref != 'refs/heads/bugfix/*' }}
+    steps:      
+      - uses: actions/checkout@v3
+
+      - name: OWASP Dependency-Check
+        uses: dependency-check/Dependency-Check_Action@main
+        with:
+          project: "test"
+          path: "."
+          format: "ALL"
+          args: >
+            --failOnCVSS 7
+            --enableRetired
