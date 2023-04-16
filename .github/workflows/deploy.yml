@@ -28,6 +28,8 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.ref != 'refs/heads/main' || github.ref != 'refs/heads/release/*' || github.ref != 'refs/heads/bugfix/*' }}
     steps:
+      - uses: actions/checkout@v3
+
       - name: Install modules
         run: yarn
         
@@ -61,7 +63,7 @@ jobs:
         
   build_and_deploy:
     name: Build and deploy
-    needs: ['sonarcloud', 'eslint']
+    needs: ['sonarcloud', 'eslint', 'owasp']
     runs-on: ubuntu-latest
     steps:
       - name: Set BUILD_TYPE environment variable
