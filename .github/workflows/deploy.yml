@@ -10,60 +10,58 @@ on:
       - feature/*
       - bugfix/*
 jobs:  
-  # sonarcloud:
-  #   name: SonarCloud
-  #   runs-on: ubuntu-latest
-  #   if: ${{ github.ref != 'refs/heads/main' || github.ref != 'refs/heads/release/*' || github.ref != 'refs/heads/bugfix/*' }}
-  #   steps:
-  #     - uses: actions/checkout@v3
+  sonarcloud:
+    name: SonarCloud
+    runs-on: ubuntu-latest
+    if: ${{ github.ref != 'refs/heads/main' || github.ref != 'refs/heads/release/*' || github.ref != 'refs/heads/bugfix/*' }}
+    steps:
+      - uses: actions/checkout@v3
 
-  #     - name: SonarCloud Scan
-  #       uses: SonarSource/sonarcloud-github-action@master
-  #       env:
-  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
-  #         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
  
-  # eslint:
-  #   name: ESLint
-  #   runs-on: ubuntu-latest
-  #   if: ${{ github.ref != 'refs/heads/main' || github.ref != 'refs/heads/release/*' || github.ref != 'refs/heads/bugfix/*' }}
-  #   steps:
-  #     - uses: actions/checkout@v3
-
-  #     - name: Install modules
-  #       run: yarn
+  eslint:
+    name: ESLint
+    runs-on: ubuntu-latest
+    if: ${{ github.ref != 'refs/heads/main' || github.ref != 'refs/heads/release/*' || github.ref != 'refs/heads/bugfix/*' }}
+    steps:
+      - name: Install modules
+        run: yarn
         
-  #     - name: Run ESLint
-  #       run: yarn eslint . --ext .js,.jsx,.ts,.tsx
+      - name: Run ESLint
+        run: yarn eslint . --ext .js,.jsx,.ts,.tsx
 
 
-  # owasp:
-  #   name: OWASP Dependency Check
-  #   runs-on: ubuntu-latest
-  #   if: ${{ github.ref != 'refs/heads/main' || github.ref != 'refs/heads/release/*' || github.ref != 'refs/heads/bugfix/*' }}
-  #   steps:      
-  #     - uses: actions/checkout@v3
+  owasp:
+    name: OWASP Dependency Check
+    runs-on: ubuntu-latest
+    if: ${{ github.ref != 'refs/heads/main' || github.ref != 'refs/heads/release/*' || github.ref != 'refs/heads/bugfix/*' }}
+    steps:      
+      - uses: actions/checkout@v3
 
-  #     - name: OWASP Dependency-Check
-  #       uses: dependency-check/Dependency-Check_Action@main
-  #       with:
-  #         project: "test"
-  #         path: "."
-  #         format: "ALL"
-  #         args: >
-  #           --failOnCVSS 7
-  #           --enableRetired
+      - name: OWASP Dependency-Check
+        uses: dependency-check/Dependency-Check_Action@main
+        with:
+          project: "test"
+          path: "."
+          format: "ALL"
+          args: >
+            --failOnCVSS 7
+            --enableRetired
 
-  #     - name: Upload OWASP Dependency-Check results
-  #       if: always()
-  #       uses: actions/upload-artifact@v3
-  #       with:
-  #         name: Depcheck report
-  #         path: ${{github.workspace}}/reports
+      - name: Upload OWASP Dependency-Check results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: Depcheck report
+          path: ${{github.workspace}}/reports
         
   build_and_deploy:
     name: Build and deploy
-    # needs: ['sonarcloud', 'eslint']
+    needs: ['sonarcloud', 'eslint']
     runs-on: ubuntu-latest
     steps:
       - name: Set BUILD_TYPE environment variable
