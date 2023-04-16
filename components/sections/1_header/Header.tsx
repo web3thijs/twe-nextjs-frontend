@@ -24,7 +24,7 @@ function Header() {
         </div>
 
         <div className="mx-auto mt-16 lg:mt-0 hidden lg:flex">
-          <Image src={"/logo.svg"} width={300} height={300}/>
+          <Image src={"/logo.svg"} width={300} height={300} alt="logo"/>
         </div>
       </div>
       </div>
