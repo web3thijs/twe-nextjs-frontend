@@ -5,6 +5,7 @@ on:
 
 jobs:
   owasp:
+    name: OWASP Dependency Check
     runs-on: ubuntu-latest
     if: ${{ github.ref != 'refs/heads/main' || github.ref != 'refs/heads/release/*' || github.ref != 'refs/heads/bugfix/*' }}
     steps:      

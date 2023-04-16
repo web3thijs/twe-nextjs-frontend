@@ -10,19 +10,15 @@ on:
 
 jobs:
   sonarcloud:
-    name: SonarCloud
     uses: ./.github/workflows/sonarcloud.yml
     secrets:
       git_token: ${{ secrets.GITHUB_TOKEN }}
       sonarcloud_token: ${{ secrets.SONAR_TOKEN }}
   eslint:
-    name: ESLint
     uses: ./.github/workflows/eslint.yml
   owasp:
-    name: OWASP Dependency Check
     uses: ./.github/workflows/owasp.yml
   build_and_deploy:
-    name: Build and deploy
     needs: [sonarcloud, eslint, owasp]
     uses: ./.github/workflows/build_and_deploy.yml
     secrets:
