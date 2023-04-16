@@ -18,7 +18,7 @@ jobs:
     uses: ./.github/workflows/eslint.yml
   owasp:
     uses: ./.github/workflows/owasp.yml
-    secrets:
-      vercel_token: ${{ secrets.VERCEL_TOKEN }}
   build_and_deploy:
     uses: ./.github/workflows/build_and_deploy.yml
+    secrets:
+      vercel_token: ${{ secrets.VERCEL_TOKEN }}
