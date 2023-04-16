@@ -10,14 +10,14 @@ on:
 
 jobs:
   sonarcloud:
-    uses: ./.github/workflows/jobs/sonarcloud.yml
+    uses: ./.github/workflows/sonarcloud.yml
     secrets:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   eslint:
-    uses: ./.github/workflows/jobs/eslint.yml
+    uses: ./.github/workflows/eslint.yml
   owasp:
-    uses: ./.github/workflows/jobs/owasp.yml
+    uses: ./.github/workflows/owasp.yml
   build_and_deploy:
-    uses: ./.github/workflows/jobs/build_and_deploy.yml
+    uses: ./.github/workflows/build_and_deploy.yml
     needs: ['sonarcloud', 'eslint', 'owasp']
