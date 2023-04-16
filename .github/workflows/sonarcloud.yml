@@ -1,5 +1,3 @@
-name: SonarCloud
-
 on:
   workflow_call:
     secrets:
@@ -10,7 +8,6 @@ on:
 
 jobs:
   sonarcloud:
-    name: SonarCloud
     runs-on: ubuntu-latest
     if: ${{ github.ref != 'refs/heads/main' || github.ref != 'refs/heads/release/*' || github.ref != 'refs/heads/bugfix/*' }}
     steps:
