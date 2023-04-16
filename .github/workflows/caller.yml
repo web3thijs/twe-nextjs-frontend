@@ -14,5 +14,11 @@ jobs:
     secrets:
       git_token: ${{ secrets.GITHUB_TOKEN }}
       sonarcloud_token: ${{ secrets.SONAR_TOKEN }}
+  eslint:
+    uses: ./.github/workflows/eslint.yml
+  owasp:
+    uses: ./.github/workflows/owasp.yml
+    secrets:
+      vercel_token: ${{ secrets.VERCEL_TOKEN }}
   build_and_deploy:
     uses: ./.github/workflows/build_and_deploy.yml
