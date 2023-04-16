@@ -1,5 +1,8 @@
 name: Build and deploy
 
+on:
+  workflow_call:
+
 build_and_deploy:
   name: Build and deploy
   needs: ['sonarcloud', 'eslint', 'owasp']

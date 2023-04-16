@@ -1,5 +1,8 @@
 name: OWASP Dependency Check
 
+on:
+  workflow_call:
+
 jobs:
   owasp:
     name: OWASP Dependency Check

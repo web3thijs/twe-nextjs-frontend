@@ -1,5 +1,8 @@
 name: ESlint
 
+on:
+  workflow_call:
+
 eslint:
   name: ESLint
   runs-on: ubuntu-latest
