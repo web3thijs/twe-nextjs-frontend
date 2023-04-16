@@ -5,7 +5,6 @@ on:
 
 build_and_deploy:
   name: Build and deploy
-  needs: ['sonarcloud', 'eslint', 'owasp']
   runs-on: ubuntu-latest
   steps:
     - uses: actions/checkout@v3
