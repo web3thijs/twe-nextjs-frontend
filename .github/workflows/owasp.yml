@@ -20,3 +20,10 @@ jobs:
           args: >
             --failOnCVSS 7
             --enableRetired
+
+      - name: Upload OWASP Dependency-Check results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: Depcheck report
+          path: ${{github.workspace}}/reports
