@@ -49,6 +49,7 @@ function References() {
                 objectFit="cover"
                 layout="fill"
                 src={"/references/2.jpg"}
+                alt="ref2"
               ></Image>
             </SwiperSlide>
             <SwiperSlide className={swiperSlideClass}>
@@ -56,6 +57,7 @@ function References() {
                 objectFit="cover"
                 layout="fill"
                 src={"/references/1.jpg"}
+                alt="ref1"
               ></Image>
             </SwiperSlide>
             <SwiperSlide className={swiperSlideClass}>
@@ -63,6 +65,7 @@ function References() {
                 objectFit="cover"
                 layout="fill"
                 src={"/references/3.jpg"}
+                alt="ref3"
               ></Image>
             </SwiperSlide>
             <SwiperSlide className={swiperSlideClass}>
@@ -70,6 +73,7 @@ function References() {
                 objectFit="cover"
                 layout="fill"
                 src={"/references/4.jpg"}
+                alt="ref4"
               ></Image>
             </SwiperSlide>
             <SwiperSlide className={swiperSlideClass}>
@@ -77,6 +81,7 @@ function References() {
                 objectFit="cover"
                 layout="fill"
                 src={"/references/5.jpg"}
+                alt="ref5"
               ></Image>
             </SwiperSlide>
             <SwiperSlide className={swiperSlideClass}>
@@ -84,6 +89,7 @@ function References() {
                 objectFit="cover"
                 layout="fill"
                 src={"/references/6.jpg"}
+                alt="ref6"
               ></Image>
             </SwiperSlide>
             <SwiperSlide className={swiperSlideClass}>
@@ -91,6 +97,7 @@ function References() {
                 objectFit="cover"
                 layout="fill"
                 src={"/references/7.jpg"}
+                alt="ref7"
               ></Image>
             </SwiperSlide>
           </Swiper>
