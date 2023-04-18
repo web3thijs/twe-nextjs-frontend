@@ -20,18 +20,49 @@ import {
 } from "@heroicons/react/20/solid";
 import { Switch } from "@headlessui/react";
 import Title from "../../shared/Title";
+import Modal from "../../shared/Modal";
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Contact() {
-  const [agreed, setAgreed] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
+  async function submitForm(e: any) {
+    const formData: any = {};
+
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    Array.from(e.currentTarget.elements).forEach((field) => {
+      if (!(field as any).name) return;
+      formData[(field as any).name] = (field as any).value;
+    });
+
+    fetch("/api/mail", {
+      method: "POST",
+      body: JSON.stringify(formData),
+    })
+      .then(function () {
+        console.log("ok");
+        setModalIsOpen(true);
+        (document.getElementById("contact-form") as HTMLFormElement).reset();
+      })
+      .catch(function () {
+        console.log("Error");
+        setIsSubmitting(false);
+      });
+  }
   return (
-    <div className="container relative">
-      <div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
-        {/* <div
+    <>
+      <div className="container relative">
+        <div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
+          {/* <div
         className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
         aria-hidden="true"
       >
@@ -43,137 +74,125 @@ export default function Contact() {
           }}
         />
       </div> */}
-        <Title
-          small={"Contact"}
-          big={"Vraag uw offerte aan of stel een vraag"}
-          outline={"center"}
-        ></Title>
-        <form
-          action="#"
-          method="POST"
-          className="mx-auto mt-16 max-w-3xl sm:mt-20"
-        >
-          <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-            <div>
-              <label
-                htmlFor="first-name"
-                className="block text-sm font-semibold leading-6 text-gray-900"
-              >
-                Voornaam <span className="text-red-400">*</span>
-              </label>
-              <div className="mt-2.5">
-                <input
-                  type="text"
-                  name="first-name"
-                  id="first-name"
-                  autoComplete="given-name"
-                  className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-greenish sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
-            <div>
-              <label
-                htmlFor="last-name"
-                className="block text-sm font-semibold leading-6 text-gray-900"
-              >
-                Achternaam <span className="text-red-400">*</span>
-              </label>
-              <div className="mt-2.5">
-                <input
-                  type="text"
-                  name="last-name"
-                  id="last-name"
-                  autoComplete="family-name"
-                  className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-greenish sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
-            <div className="sm:col-span-2">
-              <label
-                htmlFor="company"
-                className="block text-sm font-semibold leading-6 text-gray-900"
-              >
-                Bedrijf
-              </label>
-              <div className="mt-2.5">
-                <input
-                  type="text"
-                  name="company"
-                  id="company"
-                  autoComplete="organization"
-                  className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-greenish sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
-            <div className="sm:col-span-2">
-              <label
-                htmlFor="email"
-                className="block text-sm font-semibold leading-6 text-gray-900"
-              >
-                Email <span className="text-red-400">*</span>
-              </label>
-              <div className="mt-2.5">
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  autoComplete="email"
-                  className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-greenish sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
-            <div className="sm:col-span-2">
-              <label
-                htmlFor="phone-number"
-                className="block text-sm font-semibold leading-6 text-gray-900"
-              >
-                GSM-nummer
-              </label>
-              <div className="relative mt-2.5">
-                <div className="absolute inset-y-0 left-0 flex items-center">
-                  <label htmlFor="country" className="sr-only">
-                    Country
-                  </label>
-                  <select
-                    id="country"
-                    name="country"
-                    className="h-full rounded-md border-0 bg-transparent bg-none py-0 pl-4 pr-9 text-gray-400 focus:ring-2 focus:ring-inset focus:ring-greenish sm:text-sm"
-                  >
-                    <option>BE</option>
-                    <option>NL</option>
-                  </select>
-                  <ChevronDownIcon
-                    className="pointer-events-none absolute right-3 top-0 h-full w-5 text-gray-400"
-                    aria-hidden="true"
+          <Title
+            small={"Contact"}
+            big={"Vraag uw offerte aan of stel een vraag"}
+            outline={"center"}
+          ></Title>
+          <form
+            method="POST"
+            onSubmit={submitForm}
+            className="mx-auto mt-16 max-w-3xl sm:mt-20"
+            id="contact-form"
+          >
+            <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+              <div>
+                <label
+                  htmlFor="first_name"
+                  className="block text-sm font-semibold leading-6 text-gray-900"
+                >
+                  Voornaam <span className="text-red-400">*</span>
+                </label>
+                <div className="mt-2.5">
+                  <input
+                    type="text"
+                    name="first_name"
+                    id="first_name"
+                    autoComplete="given-name"
+                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-greenish sm:text-sm sm:leading-6"
+                    required
                   />
                 </div>
-                <input
-                  type="tel"
-                  name="phone-number"
-                  id="phone-number"
-                  autoComplete="tel"
-                  className="block w-full rounded-md border-0 px-3.5 py-2 pl-20 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-greenish sm:text-sm sm:leading-6"
-                />
               </div>
-            </div>
-            <div className="sm:col-span-2">
-              <label
-                htmlFor="message"
-                className="block text-sm font-semibold leading-6 text-gray-900"
-              >
-                Bericht <span className="text-red-400">*</span>
-              </label>
-              <div className="mt-2.5">
-                <textarea
-                  name="message"
-                  id="message"
-                  rows={4}
-                  className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-greenish sm:text-sm sm:leading-6"
-                  defaultValue={""}
-                />
+              <div>
+                <label
+                  htmlFor="last_name"
+                  className="block text-sm font-semibold leading-6 text-gray-900"
+                >
+                  Achternaam <span className="text-red-400">*</span>
+                </label>
+                <div className="mt-2.5">
+                  <input
+                    type="text"
+                    name="last_name"
+                    id="last_name"
+                    autoComplete="family-name"
+                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-greenish sm:text-sm sm:leading-6"
+                    required
+                  />
+                </div>
               </div>
-            </div>
-            {/* <Switch.Group as="div" className="flex gap-x-4 sm:col-span-2">
+              <div className="sm:col-span-2">
+                <label
+                  htmlFor="company"
+                  className="block text-sm font-semibold leading-6 text-gray-900"
+                >
+                  Bedrijf
+                </label>
+                <div className="mt-2.5">
+                  <input
+                    type="text"
+                    name="company"
+                    id="company"
+                    autoComplete="organization"
+                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-greenish sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>
+              <div className="sm:col-span-2">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-semibold leading-6 text-gray-900"
+                >
+                  Email <span className="text-red-400">*</span>
+                </label>
+                <div className="mt-2.5">
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    autoComplete="email"
+                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-greenish sm:text-sm sm:leading-6"
+                    required
+                  />
+                </div>
+              </div>
+              <div className="sm:col-span-2">
+                <label
+                  htmlFor="phone-number"
+                  className="block text-sm font-semibold leading-6 text-gray-900"
+                >
+                  GSM-nummer
+                </label>
+                <div className="relative mt-2.5">
+                  <input
+                    type="tel"
+                    name="phone_number"
+                    id="phone_number"
+                    autoComplete="tel"
+                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-greenish sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>
+              <div className="sm:col-span-2">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-semibold leading-6 text-gray-900"
+                >
+                  Bericht <span className="text-red-400">*</span>
+                </label>
+                <div className="mt-2.5">
+                  <textarea
+                    name="message"
+                    id="message"
+                    rows={4}
+                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-greenish sm:text-sm sm:leading-6"
+                    defaultValue={""}
+                    required
+                  />
+                </div>
+              </div>
+              {/* <Switch.Group as="div" className="flex gap-x-4 sm:col-span-2">
             <div className="flex h-6 items-center">
               <Switch
                 checked={agreed}
@@ -201,18 +220,19 @@ export default function Contact() {
               .
             </Switch.Label>
           </Switch.Group> */}
-          </div>
-          <div className="mt-10">
-            <button
-              type="submit"
-              className="block w-full rounded-md bg-greenish px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-greenish focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-greenish"
-            >
-              Verzenden
-            </button>
-          </div>
-        </form>
-        <div className="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow mt-8 sm:mt-10 max-w-3xl mx-auto">
-          {/* <div className="flex w-full items-center justify-between space-x-6 p-6">
+            </div>
+            <div className="mt-10">
+              <button
+                type="submit"
+                className={`block w-full rounded-md ${isSubmitting ? 'bg-grey hover:bg-grey focus-visible:outline-grey' : 'bg-greenish hover:bg-greenish focus-visible:outline-greenish'} px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2`}
+                disabled={isSubmitting ? true : false}
+              >
+                Verzenden
+              </button>
+            </div>
+          </form>
+          <div className="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow mt-8 sm:mt-10 max-w-3xl mx-auto">
+            {/* <div className="flex w-full items-center justify-between space-x-6 p-6">
             <div className="flex-1 truncate">
               <div className="flex items-center space-x-3">
                 <h3 className="truncate text-sm font-medium text-gray-900">{'person.name'}</h3>
@@ -224,36 +244,45 @@ export default function Contact() {
             </div>
             <img className="h-10 w-10 flex-shrink-0 rounded-full bg-gray-300" src={'person.imageUrl'} alt="" />
           </div> */}
-          <div>
-            <div className="-mt-px flex divide-x divide-gray-200">
-              <div className="flex w-0 flex-1">
-                <a
-                  href={`mailto:info@tw-elek.be`}
-                  className="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900"
-                >
-                  <EnvelopeIcon
-                    className="h-5 w-5 text-gray-400"
-                    aria-hidden="true"
-                  />
-                  Email
-                </a>
-              </div>
-              <div className="-ml-px flex w-0 flex-1">
-                <a
-                  href={`tel:+32 471 25 39 84`}
-                  className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-semibold text-gray-900"
-                >
-                  <PhoneIcon
-                    className="h-5 w-5 text-gray-400"
-                    aria-hidden="true"
-                  />
-                  GSM
-                </a>
+            <div>
+              <div className="-mt-px flex divide-x divide-gray-200">
+                <div className="flex w-0 flex-1">
+                  <a
+                    href={`mailto:info@tw-elek.be`}
+                    className="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900"
+                  >
+                    <EnvelopeIcon
+                      className="h-5 w-5 text-gray-400"
+                      aria-hidden="true"
+                    />
+                    Email
+                  </a>
+                </div>
+                <div className="-ml-px flex w-0 flex-1">
+                  <a
+                    href={`tel:+32 471 25 39 84`}
+                    className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-semibold text-gray-900"
+                  >
+                    <PhoneIcon
+                      className="h-5 w-5 text-gray-400"
+                      aria-hidden="true"
+                    />
+                    GSM
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+
+      <Modal isModalOpen={modalIsOpen} hideModal={() => setModalIsOpen(false)}>
+        <FontAwesomeIcon
+          icon={faCircleCheck as IconProp}
+          className="text-greenish text-5xl"
+        />
+        <p className="pt-3">Uw bericht werd succesvol verzonden.</p>
+      </Modal>
+    </>
   );
 }
