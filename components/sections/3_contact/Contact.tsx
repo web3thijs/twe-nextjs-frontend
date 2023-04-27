@@ -16,7 +16,7 @@ import Info from "./Info";
 
 function Contact() {
   return (
-    <div className="container">
+    <div className="container" data-testid="contact">
       <div className="grid grid-cols-1 md:grid-col2s-">
         <Title
           small={"Contact"}
