@@ -24,7 +24,7 @@ const Home: NextPage<{ data: Props }> = ({ data }) => {
   return (
     <>
       <Head>
-        <title>TW Elektriciteitswerken</title>
+        <title>TW Elek BV</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <section className="pt-12 pb-16 lg:pt-32 lg:pb-48" id="header">

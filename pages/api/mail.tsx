@@ -5,15 +5,17 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 export default async function handler(req: any, res: any) {
     const body = JSON.parse(req.body);
     const message = `
-      Naam: ${body.firstName} ${body.lastName}\r\n
-      Email: ${body.mail}\r\n
+      Naam: ${body.first_name} ${body.last_name}\r\n
+      Bedrijf: ${body.company || '/'}\r\n
+      Email: ${body.email}\r\n
+      GSM: ${body.phone_number || '/'}\r\n
       Bericht:\r\n ${body.message}\r\n
     `;
 
     const dataTo = {
-      to: `info@tw-elek.be`,
+      to: process.env.CONTACT_MAIL,
       from: 'no-reply@tw-elek.be',
-      subject:  `Contact: ${body.firstName} ${body.lastName}`,
+      subject:  `Contact: ${body.first_name} ${body.last_name}`,
       text: message,
       cc: ``,
       html: message.replace(/\r\n/g, '<br>')
@@ -22,9 +24,9 @@ export default async function handler(req: any, res: any) {
     await sgMail.send(dataTo);
 
     const dataFrom = {
-      to: body.mail,
+      to: body.email,
       from: 'no-reply@tw-elek.be',
-      subject: `TW Elektriciteitswerken - Uw vraag / offerte`,
+      subject: `TW Elek BV - Uw vraag / offerte`,
       text: 'Uw bericht naar TW elektriciteitswerken:\n' + message,
       cc: ``,
       html: message.replace(/\r\n/g, '<br>')
