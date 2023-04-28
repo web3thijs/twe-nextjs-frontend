@@ -26,7 +26,7 @@ export default async function handler(req: any, res: any) {
     const dataFrom = {
       to: body.email,
       from: 'no-reply@tw-elek.be',
-      subject: `TW Elektriciteitswerken - Uw vraag / offerte`,
+      subject: `TW Elek BV - Uw vraag / offerte`,
       text: 'Uw bericht naar TW elektriciteitswerken:\n' + message,
       cc: ``,
       html: message.replace(/\r\n/g, '<br>')
